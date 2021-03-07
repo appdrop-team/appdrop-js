@@ -1,0 +1,35 @@
+{
+  "name": "appdrop-js",
+  "version": "1.0.0",
+  "description": "Asynchronous Functions for JS apps built on Appdrop.",
+  "devDependencies": {
+    "typescript": "^3.8.0"
+  },
+  "dependencies": {
+    "@types/btoa": "^1.2.3",
+    "appdrop-api": "^3.53.0",
+    "btoa": "^1.2.1"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/appdrop-team/appdrop-js.git"
+  },
+  "keywords": [
+    "react",
+    "react-native",
+    "ios",
+    "android",
+    "firebase",
+    "aws",
+    "azure",
+    "no-code"
+  ],
+  "author": "Appdrop Inc.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/appdrop-team/appdrop-js/issues"
+  },
+  "homepage": "https://github.com/appdrop-team/appdrop-js#readme"
+}
