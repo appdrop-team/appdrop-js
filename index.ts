@@ -907,8 +907,7 @@ export async function initCloudAppState(
                 "Content-Type": 'text/plain'
             },
             body: JSON.stringify(request_body),
-            method: method,
-            mode: 'no-cors'
+            method: method
         });
         if (response.status === 200) {
             const response_json = await response.json(); 
