@@ -901,7 +901,7 @@ export async function initCloudAppState(
             app_config: app_config,
             data: data
         };
-        const response = await fetch(`${APIRequestBase}/v1/initAppState`, {
+        const response = await fetch(`${APIRequestBase}/v1/initAppState/cloud`, {
             headers: {
                 "Authorization": `Basic ${btoa(app_config.api_key)}`,
                 "Content-Type": 'text/plain'
