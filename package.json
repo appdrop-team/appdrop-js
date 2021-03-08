@@ -1,13 +1,13 @@
 {
   "name": "appdrop-js",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "Asynchronous Functions for JS apps built on Appdrop.",
   "devDependencies": {
     "typescript": "^3.8.0"
   },
   "dependencies": {
     "@types/btoa": "^1.2.3",
-    "appdrop-api": "^3.59.0",
+    "appdrop-api": "^3.63.0",
     "btoa": "^1.2.1"
   },
   "main": "dist/index.js",
