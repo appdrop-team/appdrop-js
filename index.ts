@@ -43,6 +43,7 @@ import {
     ProjectUser,
     UpdateProjectUserParams,
     CancelOrderParams,
+    Charge,
 } from 'appdrop-api';
 import btoa from 'btoa';
 
@@ -308,7 +309,7 @@ export async function updateCustomerSubscription<T>(
 /**
  * Exchanges a Stripe customer id and Charge params for a Charge object
  */
-export async function createCustomerCharge<T>(
+export async function createCustomerCharge(
     app_config: AppConfig,
     data: CreateChargeParams,
     order_id: string,
@@ -332,7 +333,7 @@ export async function createCustomerCharge<T>(
         });
         if (response.status === 200) {
             const response_json = await response.json(); 
-            return response_json as T;
+            return response_json as Charge;
         }
         else {
             const response_json = await response.json(); 
