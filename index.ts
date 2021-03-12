@@ -44,6 +44,7 @@ import {
     UpdateProjectUserParams,
     CancelOrderParams,
     Charge,
+    RequestReturnParams,
 } from 'appdrop-api';
 import btoa from 'btoa';
 
@@ -485,7 +486,7 @@ export async function createOrder(
  */
 export async function updateOrder(
     app_config: AppConfig,
-    data: UpdateOrderParams,
+    data: UpdateOrderParams|RequestReturnParams,
     project_user_id: string,
     order_id: string
 )  {
