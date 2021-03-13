@@ -67,7 +67,7 @@ export async function authenticateProjectUser<T>(
     app_config: AppConfig,
     data: AuthenticateUserParams,
     project_user_id: string,
-    livemode: boolean = true
+    livemode: boolean
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/projects/:projectId/users/:userId/authenticateUser';
@@ -112,7 +112,7 @@ export async function authenticateProjectUser<T>(
 export async function retrieveProjectUserSecurityQuestion<T>(
     app_config: AppConfig,
     data: RetrieveUserSecurityQuestionParams,
-    livemode: boolean = true
+    livemode: boolean
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/projects/:projectId/retrieveUserSecurityQuestion';
@@ -155,7 +155,7 @@ export async function requestProjectUserPasswordReset<T>(
     app_config: AppConfig,
     data: RequestUserPasswordResetParams,
     project_user_id: string,
-    livemode: boolean = true
+    livemode: boolean
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/projects/:projectId/users/:userId/requestUserPasswordReset';
@@ -205,7 +205,7 @@ export async function attachCardToCustomer<T>(
     data: CreateCardParams,
     stripe_customer_id: string,
     stripe_customer_type: StripeCustomerType,
-    livemode: boolean = true
+    livemode: boolean
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/customers/:stripeCustomerId/cards/:stripeCustomerType';
@@ -247,7 +247,7 @@ export async function createCustomerSubscription<T>(
     data: CreateSubscriptionParams,
     stripe_customer_id: string,
     stripe_customer_type: string,
-    livemode: boolean = true
+    livemode: boolean
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/customers/:stripeCustomerId/subscriptions/:stripeCustomerType';
@@ -290,7 +290,7 @@ export async function updateCustomerSubscription<T>(
     stripe_customer_id: string,
     stripe_customer_type: StripeCustomerType,
     stripe_subscription_id: string,
-    livemode: boolean = true
+    livemode: boolean
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/customers/:stripeCustomerId/subscriptions/:subscriptionId/:stripeCustomerType';
@@ -332,7 +332,7 @@ export async function createCustomerCharge(
     order_id: string,
     stripe_customer_id: string,
     stripe_customer_type: StripeCustomerType,
-    livemode: boolean = true
+    livemode: boolean
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/customers/:stripeCustomerId/orders/:orderId/charges/:stripeCustomerType';
@@ -376,7 +376,7 @@ export async function createCustomerChargeRefund(
     data: CreateRefundParams,
     order_id: string,
     stripe_customer_id: string,
-    livemode: boolean = true
+    livemode: boolean
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/customers/:stripeCustomerId/orders/:orderId/refunds';
@@ -424,7 +424,7 @@ export async function updateEntity<T>(
     app_config: AppConfig,
     data: UpdateEnterpriseParams|UpdateOrganizationParams,
     entity_id: string,
-    livemode: boolean = true
+    livemode: boolean
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/entities/:entityId';
@@ -472,7 +472,7 @@ export async function createOrder(
     app_config: AppConfig,
     data: CreateOrderParams,
     project_user_id: string,
-    livemode: boolean = true
+    livemode: boolean
 )  {
     try {
         const _: APIRequestEndpoint = 'v1/projects/:projectId/users/:userId/orders';
@@ -513,7 +513,7 @@ export async function updateOrder(
     data: UpdateOrderParams|RequestReturnParams|AttachOrderPromoParams,
     project_user_id: string,
     order_id: string,
-    livemode: boolean = true
+    livemode: boolean
 )  {
     try {
         const _: APIRequestEndpoint = 'v1/projects/:projectId/users/:userId/orders/:orderId';
@@ -554,7 +554,7 @@ export async function confirmOrder(
     data: ConfirmOrderParams,
     project_user_id: string,
     order_id: string,
-    livemode: boolean = true
+    livemode: boolean
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/projects/:projectId/users/:userId/orders/:orderId/confirm';
@@ -595,7 +595,7 @@ export async function cancelOrder(
     data: CancelOrderParams,
     project_user_id: string,
     order_id: string,
-    livemode: boolean = true
+    livemode: boolean
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/projects/:projectId/users/:userId/orders/:orderId/cancel';
@@ -643,7 +643,7 @@ export async function syncPrintfulProducts(
     app_config: AppConfig,
     data: SyncPrintfulProductsParams,
     project_id: string,
-    livemode: boolean = true
+    livemode: boolean
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/projects/:projectId/syncPrintfulProducts';
@@ -690,7 +690,7 @@ export async function syncPrintfulProducts(
 export async function createProjectTemplate(
     app_config: AppConfig,
     data: CreateProjectTemplateParams,
-    livemode: boolean = true
+    livemode: boolean
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/projectTemplates';
@@ -730,7 +730,7 @@ export async function updateProjectTemplate(
     app_config: AppConfig,
     data: UpdateProjectTemplateParams,
     project_template_id: string,
-    livemode: boolean = true
+    livemode: boolean
 )  {
     try {
         const _: APIRequestEndpoint = 'v1/projectTemplates/:projectTemplateId';
@@ -769,7 +769,7 @@ export async function updateProjectTemplate(
 export async function createECommerceProject(
     app_config: AppConfig,
     data: CreateECommerceProjectParams,
-    livemode: boolean = true
+    livemode: boolean
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/projects';
@@ -809,7 +809,7 @@ export async function updateECommerceProject(
     app_config: AppConfig,
     data: UpdateECommerceProjectParams,
     project_id: string,
-    livemode: boolean = true
+    livemode: boolean
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/projects/:projectId';
@@ -849,7 +849,7 @@ export async function createApp(
     app_config: AppConfig,
     data: CreateAppParams,
     project_id: string,
-    livemode: boolean = true
+    livemode: boolean
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/projects/:projectId/apps';
@@ -890,7 +890,7 @@ export async function updateApp(
     data: UpdateAppParams,
     project_id: string,
     app_id: string,
-    livemode: boolean = true
+    livemode: boolean
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/projects/:projectId/apps/:appId';
@@ -939,7 +939,7 @@ export async function updateApp(
 export async function initCloudAppState(
     app_config: AppConfig,
     data: InitCloudAppParams,
-    livemode: boolean = true
+    livemode: boolean
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/initAppState/cloud';
@@ -982,7 +982,7 @@ export async function updateCloudProjectUser(
     app_config: AppConfig,
     data: UpdateProjectUserParams,
     project_user_id: string,
-    livemode: boolean = true
+    livemode: boolean
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/projects/:projectId/users/:userId';
@@ -1026,7 +1026,7 @@ export async function updateCloudProjectUser(
 export async function initECommerceAppState(
     app_config: AppConfig,
     data: InitEcommerceAppParams,
-    livemode: boolean = true
+    livemode: boolean
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/initAppState/ecommerce';
@@ -1069,7 +1069,7 @@ export async function updateECommerceProjectUser(
     app_config: AppConfig,
     data: UpdateECommerceProjectUserParams,
     project_user_id: string,
-    livemode: boolean = true
+    livemode: boolean
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/projects/:projectId/users/:userId';
@@ -1110,7 +1110,7 @@ export async function updateECommerceProjectUser(
     app_config: AppConfig,
     data: CreatePromoParams,
     project_id: string,
-    livemode: boolean = true
+    livemode: boolean
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/projects/:projectId/promos';
@@ -1151,7 +1151,7 @@ export async function updatePromo(
     data: UpdatePromoParams,
     project_id: string,
     promo_id: string,
-    livemode: boolean = true
+    livemode: boolean
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/projects/:projectId/promos/:promoId';
