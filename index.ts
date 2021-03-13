@@ -5,6 +5,7 @@ import {
     App,
     AppConfig,
     APIRequestEndpoint,
+    AttachOrderPromoParams,
     AuthenticateUserParams,
     ConfirmOrderParams,
     CreateAppParams,
@@ -489,7 +490,7 @@ export async function createOrder(
  */
 export async function updateOrder(
     app_config: AppConfig,
-    data: UpdateOrderParams|RequestReturnParams,
+    data: UpdateOrderParams|RequestReturnParams|AttachOrderPromoParams,
     project_user_id: string,
     order_id: string
 )  {
