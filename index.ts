@@ -66,13 +66,15 @@ import btoa from 'btoa';
 export async function authenticateProjectUser<T>(
     app_config: AppConfig,
     data: AuthenticateUserParams,
-    project_user_id: string
+    project_user_id: string,
+    livemode: boolean = true
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/projects/:projectId/users/:userId/authenticateUser';
         const method: APIRequestMethod = 'POST';
         const request_body: APIRequestBody = {
             app_config: app_config,
+            livemode: livemode,
             data: data
         };
         const response = await fetch(`${APIRequestBase}/v1/projects/${app_config.project_id}/users/${project_user_id}/authenticateUser`, {
@@ -110,12 +112,14 @@ export async function authenticateProjectUser<T>(
 export async function retrieveProjectUserSecurityQuestion<T>(
     app_config: AppConfig,
     data: RetrieveUserSecurityQuestionParams,
+    livemode: boolean = true
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/projects/:projectId/retrieveUserSecurityQuestion';
         const method: APIRequestMethod = 'POST';
         const request_body: APIRequestBody = {
             app_config: app_config,
+            livemode: livemode,
             data: data
         };
         const response = await fetch(`${APIRequestBase}/v1/projects/${app_config.project_id}/retrieveUserSecurityQuestion`, {
@@ -150,13 +154,15 @@ export async function retrieveProjectUserSecurityQuestion<T>(
 export async function requestProjectUserPasswordReset<T>(
     app_config: AppConfig,
     data: RequestUserPasswordResetParams,
-    project_user_id: string
+    project_user_id: string,
+    livemode: boolean = true
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/projects/:projectId/users/:userId/requestUserPasswordReset';
         const method: APIRequestMethod = 'POST';
         const request_body: APIRequestBody = {
             app_config: app_config,
+            livemode: livemode,
             data: data
         };
         const response = await fetch(`${APIRequestBase}/v1/projects/${app_config.project_id}/users/${project_user_id}/requestUserPasswordReset`, {
@@ -198,13 +204,15 @@ export async function attachCardToCustomer<T>(
     app_config: AppConfig,
     data: CreateCardParams,
     stripe_customer_id: string,
-    stripe_customer_type: StripeCustomerType
+    stripe_customer_type: StripeCustomerType,
+    livemode: boolean = true
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/customers/:stripeCustomerId/cards/:stripeCustomerType';
         const method: APIRequestMethod = 'POST';
         const request_body: APIRequestBody = {
             app_config: app_config,
+            livemode: livemode,
             data: data
         };
         const response = await fetch(`${APIRequestBase}/v1/customers/${stripe_customer_id}/cards/${stripe_customer_type}`, {
@@ -238,13 +246,15 @@ export async function createCustomerSubscription<T>(
     app_config: AppConfig,
     data: CreateSubscriptionParams,
     stripe_customer_id: string,
-    stripe_customer_type: string
+    stripe_customer_type: string,
+    livemode: boolean = true
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/customers/:stripeCustomerId/subscriptions/:stripeCustomerType';
         const method: APIRequestMethod = 'PUT';
         const request_body: APIRequestBody = {
             app_config: app_config,
+            livemode: livemode,
             data: data
         };
         const response = await fetch(`${APIRequestBase}/v1/customers/${stripe_customer_id}/subscriptions/${stripe_customer_type}`, {
@@ -279,13 +289,15 @@ export async function updateCustomerSubscription<T>(
     data: UpdateSubscriptionParams,
     stripe_customer_id: string,
     stripe_customer_type: StripeCustomerType,
-    stripe_subscription_id: string
+    stripe_subscription_id: string,
+    livemode: boolean = true
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/customers/:stripeCustomerId/subscriptions/:subscriptionId/:stripeCustomerType';
         const method: APIRequestMethod = 'PATCH';
         const request_body: APIRequestBody = {
             app_config: app_config,
+            livemode: livemode,
             data: data
         };
         const response = await fetch(`${APIRequestBase}/v1/customers/${stripe_customer_id}/subscriptions/${stripe_subscription_id}/${stripe_customer_type}`, {
@@ -319,13 +331,15 @@ export async function createCustomerCharge(
     data: CreateChargeParams,
     order_id: string,
     stripe_customer_id: string,
-    stripe_customer_type: StripeCustomerType
+    stripe_customer_type: StripeCustomerType,
+    livemode: boolean = true
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/customers/:stripeCustomerId/orders/:orderId/charges/:stripeCustomerType';
         const method: APIRequestMethod = 'PUT';
         const request_body: APIRequestBody = {
             app_config: app_config,
+            livemode: livemode,
             data: data
         };
         const response = await fetch(`${APIRequestBase}/v1/customers/${stripe_customer_id}/orders/${order_id}/charges/${stripe_customer_type}`, {
@@ -361,13 +375,15 @@ export async function createCustomerChargeRefund(
     app_config: AppConfig,
     data: CreateRefundParams,
     order_id: string,
-    stripe_customer_id: string
+    stripe_customer_id: string,
+    livemode: boolean = true
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/customers/:stripeCustomerId/orders/:orderId/refunds';
         const method: APIRequestMethod = 'PUT';
         const request_body: APIRequestBody = {
             app_config: app_config,
+            livemode: livemode,
             data: data
         };
         const response = await fetch(`${APIRequestBase}/v1/customers/${stripe_customer_id}/orders/${order_id}/refunds`, {
@@ -407,13 +423,15 @@ export async function createCustomerChargeRefund(
 export async function updateEntity<T>(
     app_config: AppConfig,
     data: UpdateEnterpriseParams|UpdateOrganizationParams,
-    entity_id: string
+    entity_id: string,
+    livemode: boolean = true
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/entities/:entityId';
         const method: APIRequestMethod = 'PATCH';
         const request_body: APIRequestBody = {
             app_config: app_config,
+            livemode: livemode,
             data: data
         };
         const response = await fetch(`${APIRequestBase}/v1/entities/${entity_id}`, {
@@ -453,13 +471,15 @@ export async function updateEntity<T>(
 export async function createOrder(
     app_config: AppConfig,
     data: CreateOrderParams,
-    project_user_id: string
+    project_user_id: string,
+    livemode: boolean = true
 )  {
     try {
         const _: APIRequestEndpoint = 'v1/projects/:projectId/users/:userId/orders';
         const method: APIRequestMethod = 'PUT';
         const request_body: APIRequestBody = {
             app_config: app_config,
+            livemode: livemode,
             data: data
         };
         const response = await fetch(`${APIRequestBase}/v1/projects/${app_config.project_id}/users/${project_user_id}/orders`, {
@@ -492,13 +512,15 @@ export async function updateOrder(
     app_config: AppConfig,
     data: UpdateOrderParams|RequestReturnParams|AttachOrderPromoParams,
     project_user_id: string,
-    order_id: string
+    order_id: string,
+    livemode: boolean = true
 )  {
     try {
         const _: APIRequestEndpoint = 'v1/projects/:projectId/users/:userId/orders/:orderId';
         const method: APIRequestMethod = 'PATCH';
         const request_body: APIRequestBody = {
             app_config: app_config,
+            livemode: livemode,
             data: data
         };
         const response = await fetch(`${APIRequestBase}/v1/projects/${app_config.project_id}/users/${project_user_id}/orders/${order_id}`, {
@@ -531,13 +553,15 @@ export async function confirmOrder(
     app_config: AppConfig,
     data: ConfirmOrderParams,
     project_user_id: string,
-    order_id: string
+    order_id: string,
+    livemode: boolean = true
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/projects/:projectId/users/:userId/orders/:orderId/confirm';
         const method: APIRequestMethod = 'POST';
         const request_body: APIRequestBody = {
             app_config: app_config,
+            livemode: livemode,
             data: data
         };
         const response = await fetch(`${APIRequestBase}/v1/projects/${app_config.project_id}/users/${project_user_id}/orders/${order_id}/confirm`, {
@@ -570,13 +594,15 @@ export async function cancelOrder(
     app_config: AppConfig,
     data: CancelOrderParams,
     project_user_id: string,
-    order_id: string
+    order_id: string,
+    livemode: boolean = true
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/projects/:projectId/users/:userId/orders/:orderId/cancel';
         const method: APIRequestMethod = 'POST';
         const request_body: APIRequestBody = {
             app_config: app_config,
+            livemode: livemode,
             data: data
         };
         const response = await fetch(`${APIRequestBase}/v1/projects/${app_config.project_id}/users/${project_user_id}/orders/${order_id}/cancel`, {
@@ -616,13 +642,15 @@ export async function cancelOrder(
 export async function syncPrintfulProducts(
     app_config: AppConfig,
     data: SyncPrintfulProductsParams,
-    project_id: string
+    project_id: string,
+    livemode: boolean = true
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/projects/:projectId/syncPrintfulProducts';
         const method: APIRequestMethod = 'POST';
         const request_body: APIRequestBody = {
             app_config: app_config,
+            livemode: livemode,
             data: data
         };
         const response = await fetch(`${APIRequestBase}/v1/projects/${project_id}/syncPrintfulProducts`, {
@@ -661,13 +689,15 @@ export async function syncPrintfulProducts(
  */
 export async function createProjectTemplate(
     app_config: AppConfig,
-    data: CreateProjectTemplateParams
+    data: CreateProjectTemplateParams,
+    livemode: boolean = true
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/projectTemplates';
         const method: APIRequestMethod = 'PUT';
         const request_body: APIRequestBody = {
             app_config: app_config,
+            livemode: livemode,
             data: data
         };
         const response = await fetch(`${APIRequestBase}/v1/projectTemplates`, {
@@ -699,13 +729,15 @@ export async function createProjectTemplate(
 export async function updateProjectTemplate(
     app_config: AppConfig,
     data: UpdateProjectTemplateParams,
-    project_template_id: string
+    project_template_id: string,
+    livemode: boolean = true
 )  {
     try {
         const _: APIRequestEndpoint = 'v1/projectTemplates/:projectTemplateId';
         const method: APIRequestMethod = 'PATCH';
         const request_body: APIRequestBody = {
             app_config: app_config,
+            livemode: livemode,
             data: data
         };
         const response = await fetch(`${APIRequestBase}/v1/projectTemplates/${project_template_id}`, {
@@ -736,13 +768,15 @@ export async function updateProjectTemplate(
  */
 export async function createECommerceProject(
     app_config: AppConfig,
-    data: CreateECommerceProjectParams
+    data: CreateECommerceProjectParams,
+    livemode: boolean = true
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/projects';
         const method: APIRequestMethod = 'PUT';
         const request_body: APIRequestBody = {
             app_config: app_config,
+            livemode: livemode,
             data: data
         };
         const response = await fetch(`${APIRequestBase}/v1/projects`, {
@@ -774,13 +808,15 @@ export async function createECommerceProject(
 export async function updateECommerceProject(
     app_config: AppConfig,
     data: UpdateECommerceProjectParams,
-    project_id: string
+    project_id: string,
+    livemode: boolean = true
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/projects/:projectId';
         const method: APIRequestMethod = 'PATCH';
         const request_body: APIRequestBody = {
             app_config: app_config,
+            livemode: livemode,
             data: data
         };
         const response = await fetch(`${APIRequestBase}/v1/projects/${project_id}`, {
@@ -812,13 +848,15 @@ export async function updateECommerceProject(
 export async function createApp(
     app_config: AppConfig,
     data: CreateAppParams,
-    project_id: string
+    project_id: string,
+    livemode: boolean = true
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/projects/:projectId/apps';
         const method: APIRequestMethod = 'PUT';
         const request_body: APIRequestBody = {
             app_config: app_config,
+            livemode: livemode,
             data: data
         };
         const response = await fetch(`${APIRequestBase}/v1/projects/${project_id}/apps`, {
@@ -851,13 +889,15 @@ export async function updateApp(
     app_config: AppConfig,
     data: UpdateAppParams,
     project_id: string,
-    app_id: string
+    app_id: string,
+    livemode: boolean = true
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/projects/:projectId/apps/:appId';
         const method: APIRequestMethod = 'PATCH';
         const request_body: APIRequestBody = {
             app_config: app_config,
+            livemode: livemode,
             data: data
         };
         const response = await fetch(`${APIRequestBase}/v1/projects/${project_id}/apps/${app_id}`, {
@@ -899,12 +939,14 @@ export async function updateApp(
 export async function initCloudAppState(
     app_config: AppConfig,
     data: InitCloudAppParams,
+    livemode: boolean = true
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/initAppState/cloud';
         const method: APIRequestMethod = 'POST';
         const request_body: APIRequestBody = {
             app_config: app_config,
+            livemode: livemode,
             data: data
         };
         const response = await fetch(`${APIRequestBase}/v1/initAppState/cloud`, {
@@ -939,13 +981,15 @@ export async function initCloudAppState(
 export async function updateCloudProjectUser(
     app_config: AppConfig,
     data: UpdateProjectUserParams,
-    project_user_id: string
+    project_user_id: string,
+    livemode: boolean = true
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/projects/:projectId/users/:userId';
         const method: APIRequestMethod = 'PATCH';
         const request_body: APIRequestBody = {
             app_config: app_config,
+            livemode: livemode,
             data: data
         };
         const response = await fetch(`${APIRequestBase}/v1/projects/${app_config.project_id}/users/${project_user_id}`, {
@@ -982,12 +1026,14 @@ export async function updateCloudProjectUser(
 export async function initECommerceAppState(
     app_config: AppConfig,
     data: InitEcommerceAppParams,
+    livemode: boolean = true
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/initAppState/ecommerce';
         const method: APIRequestMethod = 'POST';
         const request_body: APIRequestBody = {
             app_config: app_config,
+            livemode: livemode,
             data: data
         };
         const response = await fetch(`${APIRequestBase}/v1/initAppState/ecommerce`, {
@@ -1022,13 +1068,15 @@ export async function initECommerceAppState(
 export async function updateECommerceProjectUser(
     app_config: AppConfig,
     data: UpdateECommerceProjectUserParams,
-    project_user_id: string
+    project_user_id: string,
+    livemode: boolean = true
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/projects/:projectId/users/:userId';
         const method: APIRequestMethod = 'PATCH';
         const request_body: APIRequestBody = {
             app_config: app_config,
+            livemode: livemode,
             data: data
         };
         const response = await fetch(`${APIRequestBase}/v1/projects/${app_config.project_id}/users/${project_user_id}`, {
@@ -1061,13 +1109,15 @@ export async function updateECommerceProjectUser(
  export async function createPromo(
     app_config: AppConfig,
     data: CreatePromoParams,
-    project_id: string
+    project_id: string,
+    livemode: boolean = true
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/projects/:projectId/promos';
         const method: APIRequestMethod = 'PUT';
         const request_body: APIRequestBody = {
             app_config: app_config,
+            livemode: livemode,
             data: data
         };
         const response = await fetch(`${APIRequestBase}/v1/projects/${project_id}/promos`, {
@@ -1100,13 +1150,15 @@ export async function updatePromo(
     app_config: AppConfig,
     data: UpdatePromoParams,
     project_id: string,
-    promo_id: string
+    promo_id: string,
+    livemode: boolean = true
 ) {
     try {
         const _: APIRequestEndpoint = 'v1/projects/:projectId/promos/:promoId';
         const method: APIRequestMethod = 'PATCH';
         const request_body: APIRequestBody = {
             app_config: app_config,
+            livemode: livemode,
             data: data
         };
         const response = await fetch(`${APIRequestBase}/v1/projects/${project_id}/promos/${promo_id}`, {
