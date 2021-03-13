@@ -45,6 +45,9 @@ import {
     CancelOrderParams,
     Charge,
     RequestReturnParams,
+    CreatePromoParams,
+    UpdatePromoParams,
+    Promo,
 } from 'appdrop-api';
 import btoa from 'btoa';
 
@@ -1046,6 +1049,84 @@ export async function updateECommerceProjectUser(
     }
     catch (error) {
         console.error('updateECommerceProjectUser error', error);
+        return null;
+    }
+}
+
+
+/**
+ * Creates a promo.
+ */
+ export async function createPromo(
+    app_config: AppConfig,
+    data: CreatePromoParams,
+    project_id: string
+) {
+    try {
+        const _: APIRequestEndpoint = 'v1/projects/:projectId/promos';
+        const method: APIRequestMethod = 'PUT';
+        const request_body: APIRequestBody = {
+            app_config: app_config,
+            data: data
+        };
+        const response = await fetch(`${APIRequestBase}/v1/projects/${project_id}/promos`, {
+            headers: {
+                "Authorization": `Basic ${btoa(app_config.api_key)}`,
+                "Content-Type": 'text/plain'
+            },
+            body: JSON.stringify(request_body),
+            method: method
+        });
+        if (response.status === 200) {
+            const response_json = await response.json(); 
+            return response_json as Promo;
+        }
+        else {
+            const response_json = await response.json(); 
+            throw new Error(JSON.stringify(response_json,null,'\t'));
+        }
+    }
+    catch (error) {
+        console.error('createPromo error', error);
+        return null;
+    }
+}
+
+/**
+ * Updates a promo.
+ */
+export async function updatePromo(
+    app_config: AppConfig,
+    data: UpdatePromoParams,
+    project_id: string,
+    promo_id: string
+) {
+    try {
+        const _: APIRequestEndpoint = 'v1/projects/:projectId/promos/:promoId';
+        const method: APIRequestMethod = 'PATCH';
+        const request_body: APIRequestBody = {
+            app_config: app_config,
+            data: data
+        };
+        const response = await fetch(`${APIRequestBase}/v1/projects/${project_id}/promos/${promo_id}`, {
+            headers: {
+                "Authorization": `Basic ${btoa(app_config.api_key)}`,
+                "Content-Type": 'text/plain'
+            },
+            body: JSON.stringify(request_body),
+            method: method
+        });
+        if (response.status === 200) {
+            const response_json = await response.json(); 
+            return response_json as Promo;
+        }
+        else {
+            const response_json = await response.json(); 
+            throw new Error(JSON.stringify(response_json,null,'\t'));
+        }
+    }
+    catch (error) {
+        console.error('updatePromo error', error);
         return null;
     }
 }
