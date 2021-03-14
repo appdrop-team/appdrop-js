@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "@types/btoa": "^1.2.3",
-    "appdrop-api": "^4.0.56",
+    "appdrop-api": "^4.0.58",
     "btoa": "^1.2.1"
   },
   "main": "dist/index.js",
