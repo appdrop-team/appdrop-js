@@ -1324,6 +1324,98 @@ export async function updatePromo(params: UpdatePromoFunctionParams) {
     }
 }
 
+export interface CreateRemoteAssetFunctionParams extends Appdrop.APIRequestBody {
+    data: Appdrop.CreateRemoteAssetParams;
+}
+
+/**
+ * Creates a remote_asset.
+ */
+ export async function createRemoteAsset(params: CreateRemoteAssetFunctionParams) {
+    try {
+        const {
+            app_config,
+            data,
+            livemode
+        } = params;
+        const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/remoteAssets';
+        const method: Appdrop.APIRequestMethod = 'PUT';
+        const request_body: Appdrop.APIRequestBody = {
+            app_config: app_config,
+            livemode: livemode,
+            data: data
+        };
+        const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/remoteAssets`, {
+            headers: {
+                "Authorization": `Basic ${btoa(app_config.api_key)}`,
+                "Content-Type": 'text/plain'
+            },
+            body: JSON.stringify(request_body),
+            method: method
+        });
+        if (response.status === 200) {
+            const response_json = await response.json();
+            return response_json as Appdrop.RemoteAsset;
+        }
+        else {
+            const response_json = await response.json(); 
+            throw new Error(JSON.stringify(response_json,null,'\t'));
+        }
+    }
+    catch (error) {
+        console.error('createRemoteAsset error', error);
+        return null;
+    }
+}
+
+export interface UpdateRemoteAssetFunctionParams extends Appdrop.APIRequestBody {
+    data: Appdrop.UpdateRemoteAssetParams;
+    remote_asset_id: string;
+}
+
+/**
+ * Updates a remote_asset.
+ * 
+ * @Important T must inherit from Appdrop.RemoteAsset
+ */
+export async function updateRemoteAsset(params: UpdateRemoteAssetFunctionParams) {
+    try {
+        const {
+            app_config,
+            data,
+            livemode,
+            remote_asset_id
+        } = params;
+        const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/remoteAssets/:remoteAssetId';
+        const method: Appdrop.APIRequestMethod = 'PATCH';
+        const request_body: Appdrop.APIRequestBody = {
+            app_config: app_config,
+            livemode: livemode,
+            data: data
+        };
+        const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/remoteAssets/${remote_asset_id}`, {
+            headers: {
+                "Authorization": `Basic ${btoa(app_config.api_key)}`,
+                "Content-Type": 'text/plain'
+            },
+            body: JSON.stringify(request_body),
+            method: method
+        });
+        if (response.status === 200) {
+            const response_json = await response.json(); 
+            return response_json as Appdrop.RemoteAsset;
+        }
+        else {
+            const response_json = await response.json(); 
+            throw new Error(JSON.stringify(response_json,null,'\t'));
+        }
+    }
+    catch (error) {
+        console.error('updateRemoteAsset error', error);
+        return null;
+    }
+}
+
 export interface CreateThreadFunctionParams extends Appdrop.APIRequestBody {
     data: Appdrop.CreateThreadParams;
 }
