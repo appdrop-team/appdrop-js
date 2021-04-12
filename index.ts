@@ -1025,7 +1025,7 @@ export async function updateApp<T>(params: UpdateAppFunctionParams) {
 export interface InitAppStateFunctionParams extends Appdrop.APIRequestBody {
     data:
     Appdrop.InitCloudAppParams|
-    Appdrop.InitEcommerceAppParams|
+    Appdrop.InitECommerceAppParams|
     Appdrop.InitMarketplaceAppParams;
     project_type: Appdrop.ProjectType;
 }
