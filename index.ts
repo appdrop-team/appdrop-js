@@ -10,53 +10,53 @@ import btoa from 'btoa';
  */
 
 export interface AuthenticateUserFunctionParams extends Appdrop.APIRequestBody {
-    data: Appdrop.AuthenticateUserParams;
-    user_id: string;
+  data: Appdrop.AuthenticateUserParams;
+  user_id: string;
 }
 
 /**
  * Exchanges an Email and Password to Authenticate a user.
  */
 export async function authenticateUser<T>(params: AuthenticateUserFunctionParams) {
-    try {
-        const {
-            app_config,
-            data,
-            livemode,
-            user_id,
-        } = params;
-        const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/users/:userId/authenticateUser';
-        const method: Appdrop.APIRequestMethod = 'POST';
-        const request_body: Appdrop.APIRequestBody = {
-            app_config: app_config,
-            livemode: livemode,
-            data: data
-        };
-        const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/users/${user_id}/authenticateUser`, {
-            headers: {
-                "Authorization": `Basic ${btoa(app_config.api_key)}`,
-                "Content-Type": 'text/plain'
-            },
-            body: JSON.stringify(request_body),
-            method: method
-        });
-        if (response.status === 200) {
-            const response_json = await response.json(); 
-            return response_json as T;
-        }
-        else {
-            const response_json = await response.json(); 
-            throw new Error(JSON.stringify(response_json,null,'\t'));
-        }
+  try {
+    const {
+      app_config,
+      data,
+      livemode,
+      user_id,
+    } = params;
+    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/users/:userId/authenticateUser';
+    const method: Appdrop.APIRequestMethod = 'POST';
+    const request_body: Appdrop.APIRequestBody = {
+      app_config: app_config,
+      livemode: livemode,
+      data: data
+    };
+    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/users/${user_id}/authenticateUser`, {
+      headers: {
+        "Authorization": `Basic ${btoa(app_config.api_key)}`,
+        "Content-Type": 'text/plain'
+      },
+      body: JSON.stringify(request_body),
+      method: method
+    });
+    if (response.status === 200) {
+      const response_json = await response.json();
+      return response_json as T;
     }
-    catch (error) {
-        console.error('authenticateUser error', error);
-        return null;
+    else {
+      const response_json = await response.json();
+      throw new Error(JSON.stringify(response_json, null, '\t'));
     }
+  }
+  catch (error) {
+    console.error('authenticateUser error', error);
+    return null;
+  }
 }
 
 export interface RetrieveUserSecurityQuestionFunctionParams extends Appdrop.APIRequestBody {
-    data: Appdrop.RetrieveUserSecurityQuestionParams;
+  data: Appdrop.RetrieveUserSecurityQuestionParams;
 }
 
 /**
@@ -69,45 +69,45 @@ export interface RetrieveUserSecurityQuestionFunctionParams extends Appdrop.APIR
  * who can set a temporary answer to the security question for the user.
  */
 export async function retrieveUserSecurityQuestion<T>(params: RetrieveUserSecurityQuestionFunctionParams) {
-    try {
-        const {
-            app_config,
-            data,
-            livemode,
-        } = params;
-        const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/retrieveUserSecurityQuestion';
-        const method: Appdrop.APIRequestMethod = 'POST';
-        const request_body: Appdrop.APIRequestBody = {
-            app_config: app_config,
-            livemode: livemode,
-            data: data
-        };
-        const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/retrieveUserSecurityQuestion`, {
-            headers: {
-                "Authorization": `Basic ${btoa(app_config.api_key)}`,
-                "Content-Type": 'text/plain'
-            },
-            body: JSON.stringify(request_body),
-            method: method
-        });
-        if (response.status === 200) {
-            const response_json = await response.json(); 
-            return response_json as T;
-        }
-        else {
-            const response_json = await response.json(); 
-            throw new Error(JSON.stringify(response_json,null,'\t'));
-        }
+  try {
+    const {
+      app_config,
+      data,
+      livemode,
+    } = params;
+    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/retrieveUserSecurityQuestion';
+    const method: Appdrop.APIRequestMethod = 'POST';
+    const request_body: Appdrop.APIRequestBody = {
+      app_config: app_config,
+      livemode: livemode,
+      data: data
+    };
+    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/retrieveUserSecurityQuestion`, {
+      headers: {
+        "Authorization": `Basic ${btoa(app_config.api_key)}`,
+        "Content-Type": 'text/plain'
+      },
+      body: JSON.stringify(request_body),
+      method: method
+    });
+    if (response.status === 200) {
+      const response_json = await response.json();
+      return response_json as T;
     }
-    catch (error) {
-        console.error('retrieveUserSecurityQuestion error', error);
-        return null;
+    else {
+      const response_json = await response.json();
+      throw new Error(JSON.stringify(response_json, null, '\t'));
     }
+  }
+  catch (error) {
+    console.error('retrieveUserSecurityQuestion error', error);
+    return null;
+  }
 }
 
 export interface RequestUserPasswordResetFunctionParams extends Appdrop.APIRequestBody {
-    data: Appdrop.RequestUserPasswordResetParams;
-    user_id: string;
+  data: Appdrop.RequestUserPasswordResetParams;
+  user_id: string;
 }
 
 /**
@@ -117,55 +117,55 @@ export interface RequestUserPasswordResetFunctionParams extends Appdrop.APIReque
  * `password_hash` which is how we know the user previously signed up successfully.
  */
 export async function requestUserPasswordReset<T>(params: RequestUserPasswordResetFunctionParams) {
-    try {
-        const {
-            app_config,
-            data,
-            livemode,
-            user_id
-        } = params;
-        const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/users/:userId/requestUserPasswordReset';
-        const method: Appdrop.APIRequestMethod = 'POST';
-        const request_body: Appdrop.APIRequestBody = {
-            app_config: app_config,
-            livemode: livemode,
-            data: data
-        };
-        const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/users/${user_id}/requestUserPasswordReset`, {
-            headers: {
-                "Authorization": `Basic ${btoa(app_config.api_key)}`,
-                "Content-Type": 'text/plain'
-            },
-            body: JSON.stringify(request_body),
-            method: method
-        });
-        if (response.status === 200) {
-            const response_json = await response.json(); 
-            return response_json as T;
-        }
-        else {
-            const response_json = await response.json(); 
-            throw new Error(JSON.stringify(response_json,null,'\t'));
-        }
+  try {
+    const {
+      app_config,
+      data,
+      livemode,
+      user_id
+    } = params;
+    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/users/:userId/requestUserPasswordReset';
+    const method: Appdrop.APIRequestMethod = 'POST';
+    const request_body: Appdrop.APIRequestBody = {
+      app_config: app_config,
+      livemode: livemode,
+      data: data
+    };
+    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/users/${user_id}/requestUserPasswordReset`, {
+      headers: {
+        "Authorization": `Basic ${btoa(app_config.api_key)}`,
+        "Content-Type": 'text/plain'
+      },
+      body: JSON.stringify(request_body),
+      method: method
+    });
+    if (response.status === 200) {
+      const response_json = await response.json();
+      return response_json as T;
     }
-    catch (error) {
-        console.error('requestUserPasswordReset error', error);
-        return null;
+    else {
+      const response_json = await response.json();
+      throw new Error(JSON.stringify(response_json, null, '\t'));
     }
+  }
+  catch (error) {
+    console.error('requestUserPasswordReset error', error);
+    return null;
+  }
 }
 
- /**
- * 
- * **************
- * Billing
- * **************
- * 
- */
- 
+/**
+* 
+* **************
+* Billing
+* **************
+* 
+*/
+
 export interface AttachCardToCustomerFunctionParams extends Appdrop.APIRequestBody {
-    data: Appdrop.CreateCardParams;
-    stripe_customer_id: string;
-    stripe_customer_type: Appdrop.StripeCustomerType;
+  data: Appdrop.CreateCardParams;
+  stripe_customer_id: string;
+  stripe_customer_type: Appdrop.StripeCustomerType;
 }
 
 /**
@@ -173,48 +173,48 @@ export interface AttachCardToCustomerFunctionParams extends Appdrop.APIRequestBo
  * updated `financial_details`
  */
 export async function attachCardToCustomer<T>(params: AttachCardToCustomerFunctionParams) {
-    try {
-        const {
-            app_config,
-            data,
-            livemode,
-            stripe_customer_id,
-            stripe_customer_type
-        } = params;
-        const _: Appdrop.APIRequestEndpoint = 'v1/customers/:stripeCustomerId/cards/:stripeCustomerType';
-        const method: Appdrop.APIRequestMethod = 'POST';
-        const request_body: Appdrop.APIRequestBody = {
-            app_config: app_config,
-            livemode: livemode,
-            data: data
-        };
-        const response = await fetch(`${Appdrop.APIRequestBase}/v1/customers/${stripe_customer_id}/cards/${stripe_customer_type}`, {
-            headers: {
-                "Authorization": `Basic ${btoa(app_config.api_key)}`,
-                "Content-Type": 'text/plain'
-            },
-            body: JSON.stringify(request_body),
-            method: method
-        });
-        if (response.status === 200) {
-            const response_json = await response.json(); 
-            return response_json as T;
-        }
-        else {
-            const response_json = await response.json(); 
-            throw new Error(JSON.stringify(response_json,null,'\t'));
-        }
+  try {
+    const {
+      app_config,
+      data,
+      livemode,
+      stripe_customer_id,
+      stripe_customer_type
+    } = params;
+    const _: Appdrop.APIRequestEndpoint = 'v1/customers/:stripeCustomerId/cards/:stripeCustomerType';
+    const method: Appdrop.APIRequestMethod = 'POST';
+    const request_body: Appdrop.APIRequestBody = {
+      app_config: app_config,
+      livemode: livemode,
+      data: data
+    };
+    const response = await fetch(`${Appdrop.APIRequestBase}/v1/customers/${stripe_customer_id}/cards/${stripe_customer_type}`, {
+      headers: {
+        "Authorization": `Basic ${btoa(app_config.api_key)}`,
+        "Content-Type": 'text/plain'
+      },
+      body: JSON.stringify(request_body),
+      method: method
+    });
+    if (response.status === 200) {
+      const response_json = await response.json();
+      return response_json as T;
     }
-    catch (error) {
-        console.error('attachCardToCustomer error', error);
-        return null;
+    else {
+      const response_json = await response.json();
+      throw new Error(JSON.stringify(response_json, null, '\t'));
     }
+  }
+  catch (error) {
+    console.error('attachCardToCustomer error', error);
+    return null;
+  }
 }
 
 export interface CreateCustomerSubscriptionFunctionParams extends Appdrop.APIRequestBody {
-    data: Appdrop.CreateSubscriptionParams;
-    stripe_customer_id: string;
-    stripe_customer_type: string;
+  data: Appdrop.CreateSubscriptionParams;
+  stripe_customer_id: string;
+  stripe_customer_type: string;
 }
 
 /**
@@ -222,49 +222,49 @@ export interface CreateCustomerSubscriptionFunctionParams extends Appdrop.APIReq
  * updated `financial_details`
  */
 export async function createCustomerSubscription<T>(params: CreateCustomerSubscriptionFunctionParams) {
-    try {
-        const {
-            app_config,
-            data,
-            livemode,
-            stripe_customer_id,
-            stripe_customer_type
-        } = params;
-        const _: Appdrop.APIRequestEndpoint = 'v1/customers/:stripeCustomerId/subscriptions/:stripeCustomerType';
-        const method: Appdrop.APIRequestMethod = 'PUT';
-        const request_body: Appdrop.APIRequestBody = {
-            app_config: app_config,
-            livemode: livemode,
-            data: data
-        };
-        const response = await fetch(`${Appdrop.APIRequestBase}/v1/customers/${stripe_customer_id}/subscriptions/${stripe_customer_type}`, {
-            headers: {
-                "Authorization": `Basic ${btoa(app_config.api_key)}`,
-                "Content-Type": 'text/plain'
-            },
-            body: JSON.stringify(request_body),
-            method: method
-        });
-        if (response.status === 200) {
-            const response_json = await response.json(); 
-            return response_json as T;
-        }
-        else {
-            const response_json = await response.json(); 
-            throw new Error(JSON.stringify(response_json,null,'\t'));
-        }
+  try {
+    const {
+      app_config,
+      data,
+      livemode,
+      stripe_customer_id,
+      stripe_customer_type
+    } = params;
+    const _: Appdrop.APIRequestEndpoint = 'v1/customers/:stripeCustomerId/subscriptions/:stripeCustomerType';
+    const method: Appdrop.APIRequestMethod = 'PUT';
+    const request_body: Appdrop.APIRequestBody = {
+      app_config: app_config,
+      livemode: livemode,
+      data: data
+    };
+    const response = await fetch(`${Appdrop.APIRequestBase}/v1/customers/${stripe_customer_id}/subscriptions/${stripe_customer_type}`, {
+      headers: {
+        "Authorization": `Basic ${btoa(app_config.api_key)}`,
+        "Content-Type": 'text/plain'
+      },
+      body: JSON.stringify(request_body),
+      method: method
+    });
+    if (response.status === 200) {
+      const response_json = await response.json();
+      return response_json as T;
     }
-    catch (error) {
-        console.error('createCustomerSubscription error', error);
-        return null;
+    else {
+      const response_json = await response.json();
+      throw new Error(JSON.stringify(response_json, null, '\t'));
     }
+  }
+  catch (error) {
+    console.error('createCustomerSubscription error', error);
+    return null;
+  }
 }
 
 export interface UpdateCustomerSubscriptionFunctionParams extends Appdrop.APIRequestBody {
-    data: Appdrop.UpdateSubscriptionParams;
-    stripe_customer_id: string;
-    stripe_customer_type: Appdrop.StripeCustomerType;
-    stripe_subscription_id: string;
+  data: Appdrop.UpdateSubscriptionParams;
+  stripe_customer_id: string;
+  stripe_customer_type: Appdrop.StripeCustomerType;
+  stripe_subscription_id: string;
 }
 
 /**
@@ -272,99 +272,99 @@ export interface UpdateCustomerSubscriptionFunctionParams extends Appdrop.APIReq
  * updated `financial_details`
  */
 export async function updateCustomerSubscription<T>(params: UpdateCustomerSubscriptionFunctionParams) {
-        try {
-        const {
-            app_config,
-            data,
-            livemode,
-            stripe_customer_id,
-            stripe_customer_type,
-            stripe_subscription_id
-        } = params;
-        const _: Appdrop.APIRequestEndpoint = 'v1/customers/:stripeCustomerId/subscriptions/:subscriptionId/:stripeCustomerType';
-        const method: Appdrop.APIRequestMethod = 'PATCH';
-        const request_body: Appdrop.APIRequestBody = {
-            app_config: app_config,
-            livemode: livemode,
-            data: data
-        };
-        const response = await fetch(`${Appdrop.APIRequestBase}/v1/customers/${stripe_customer_id}/subscriptions/${stripe_subscription_id}/${stripe_customer_type}`, {
-            headers: {
-                "Authorization": `Basic ${btoa(app_config.api_key)}`,
-                "Content-Type": 'text/plain'
-            },
-            body: JSON.stringify(request_body),
-            method: method
-        });
-        if (response.status === 200) {
-            const response_json = await response.json(); 
-            return response_json as T;
-        }
-        else {
-            const response_json = await response.json(); 
-            throw new Error(JSON.stringify(response_json,null,'\t'));
-        }
+  try {
+    const {
+      app_config,
+      data,
+      livemode,
+      stripe_customer_id,
+      stripe_customer_type,
+      stripe_subscription_id
+    } = params;
+    const _: Appdrop.APIRequestEndpoint = 'v1/customers/:stripeCustomerId/subscriptions/:subscriptionId/:stripeCustomerType';
+    const method: Appdrop.APIRequestMethod = 'PATCH';
+    const request_body: Appdrop.APIRequestBody = {
+      app_config: app_config,
+      livemode: livemode,
+      data: data
+    };
+    const response = await fetch(`${Appdrop.APIRequestBase}/v1/customers/${stripe_customer_id}/subscriptions/${stripe_subscription_id}/${stripe_customer_type}`, {
+      headers: {
+        "Authorization": `Basic ${btoa(app_config.api_key)}`,
+        "Content-Type": 'text/plain'
+      },
+      body: JSON.stringify(request_body),
+      method: method
+    });
+    if (response.status === 200) {
+      const response_json = await response.json();
+      return response_json as T;
     }
-    catch (error) {
-        console.error('updateCustomerSubscription error', error);
-        return null;
+    else {
+      const response_json = await response.json();
+      throw new Error(JSON.stringify(response_json, null, '\t'));
     }
+  }
+  catch (error) {
+    console.error('updateCustomerSubscription error', error);
+    return null;
+  }
 }
 
 export interface CreateCustomerChargeFunctionParams extends Appdrop.APIRequestBody {
-    data: Appdrop.CreateChargeParams;
-    order_id: string;
-    stripe_customer_id: string;
-    stripe_customer_type: Appdrop.StripeCustomerType;
+  data: Appdrop.CreateChargeParams;
+  order_id: string;
+  stripe_customer_id: string;
+  stripe_customer_type: Appdrop.StripeCustomerType;
 }
 
 /**
  * Exchanges a Stripe customer id and Charge params for a Charge object
  */
 export async function createCustomerCharge(params: CreateCustomerChargeFunctionParams) {
-        try {
-        const {
-            app_config,
-            data,
-            livemode,
-            order_id,
-            stripe_customer_id,
-            stripe_customer_type
-        } = params;
-        const _: Appdrop.APIRequestEndpoint = 'v1/customers/:stripeCustomerId/orders/:orderId/charges/:stripeCustomerType';
-        const method: Appdrop.APIRequestMethod = 'PUT';
-        const request_body: Appdrop.APIRequestBody = {
-            app_config: app_config,
-            livemode: livemode,
-            data: data
-        };
-        const response = await fetch(`${Appdrop.APIRequestBase}/v1/customers/${stripe_customer_id}/orders/${order_id}/charges/${stripe_customer_type}`, {
-            headers: {
-                "Authorization": `Basic ${btoa(app_config.api_key)}`,
-                "Content-Type": 'text/plain'
-            },
-            body: JSON.stringify(request_body),
-            method: method
-        });
-        if (response.status === 200) {
-            const response_json = await response.json(); 
-            return response_json as Appdrop.Charge;
-        }
-        else {
-            const response_json = await response.json(); 
-            throw new Error(JSON.stringify(response_json,null,'\t'));
-        }
+  try {
+    const {
+      app_config,
+      data,
+      livemode,
+      order_id,
+      stripe_customer_id,
+      stripe_customer_type
+    } = params;
+    const _: Appdrop.APIRequestEndpoint = 'v1/customers/:stripeCustomerId/orders/:orderId/charges/:stripeCustomerType';
+    const method: Appdrop.APIRequestMethod = 'PUT';
+    const request_body: Appdrop.APIRequestBody = {
+      app_config: app_config,
+      livemode: livemode,
+      data: data
+    };
+    const response = await fetch(`${Appdrop.APIRequestBase}/v1/customers/${stripe_customer_id}/orders/${order_id}/charges/${stripe_customer_type}`, {
+      headers: {
+        "Authorization": `Basic ${btoa(app_config.api_key)}`,
+        "Content-Type": 'text/plain'
+      },
+      body: JSON.stringify(request_body),
+      method: method
+    });
+    if (response.status === 200) {
+      const response_json = await response.json();
+      return response_json as Appdrop.Charge;
     }
-    catch (error) {
-        console.error('createCustomerCharge error', error);
-        return null;
+    else {
+      const response_json = await response.json();
+      throw new Error(JSON.stringify(response_json, null, '\t'));
     }
+  }
+  catch (error) {
+    console.error('createCustomerCharge error', error);
+    return null;
+  }
 }
 
 export interface CreateCustomerChargeRefundFunctionParams extends Appdrop.APIRequestBody {
-    data: Appdrop.CreateRefundParams;
-    order_id: string;
-    stripe_customer_id: string;
+  data: Appdrop.CreateRefundParams;
+  order_id: string;
+  stripe_customer_id: string;
 }
 
 /**
@@ -374,455 +374,455 @@ export interface CreateCustomerChargeRefundFunctionParams extends Appdrop.APIReq
  * @Important Only accessible by authenticated Entity.
  */
 export async function createCustomerChargeRefund(params: CreateCustomerChargeRefundFunctionParams) {
-        try {
-        const {
-            app_config,
-            data,
-            livemode,
-            order_id,
-            stripe_customer_id
-        } = params;
-        const _: Appdrop.APIRequestEndpoint = 'v1/customers/:stripeCustomerId/orders/:orderId/refunds';
-        const method: Appdrop.APIRequestMethod = 'PUT';
-        const request_body: Appdrop.APIRequestBody = {
-            app_config: app_config,
-            livemode: livemode,
-            data: data
-        };
-        const response = await fetch(`${Appdrop.APIRequestBase}/v1/customers/${stripe_customer_id}/orders/${order_id}/refunds`, {
-            headers: {
-                "Authorization": `Basic ${btoa(app_config.api_key)}`,
-                "Content-Type": 'text/plain'
-            },
-            body: JSON.stringify(request_body),
-            method: method
-        });
-        if (response.status === 200) {
-            const response_json = await response.json(); 
-            return response_json as Appdrop.Refund;
-        }
-        else {
-            const response_json = await response.json(); 
-            throw new Error(JSON.stringify(response_json,null,'\t'));
-        }
+  try {
+    const {
+      app_config,
+      data,
+      livemode,
+      order_id,
+      stripe_customer_id
+    } = params;
+    const _: Appdrop.APIRequestEndpoint = 'v1/customers/:stripeCustomerId/orders/:orderId/refunds';
+    const method: Appdrop.APIRequestMethod = 'PUT';
+    const request_body: Appdrop.APIRequestBody = {
+      app_config: app_config,
+      livemode: livemode,
+      data: data
+    };
+    const response = await fetch(`${Appdrop.APIRequestBase}/v1/customers/${stripe_customer_id}/orders/${order_id}/refunds`, {
+      headers: {
+        "Authorization": `Basic ${btoa(app_config.api_key)}`,
+        "Content-Type": 'text/plain'
+      },
+      body: JSON.stringify(request_body),
+      method: method
+    });
+    if (response.status === 200) {
+      const response_json = await response.json();
+      return response_json as Appdrop.Refund;
     }
-    catch (error) {
-        console.error('createCustomerChargeRefund error', error);
-        return null;
+    else {
+      const response_json = await response.json();
+      throw new Error(JSON.stringify(response_json, null, '\t'));
     }
+  }
+  catch (error) {
+    console.error('createCustomerChargeRefund error', error);
+    return null;
+  }
 }
- 
- /**
- * 
- * **************
- * Entities
- * **************
- * 
- */
- 
+
+/**
+* 
+* **************
+* Entities
+* **************
+* 
+*/
+
 export interface UpdateEntityFunctionParams extends Appdrop.APIRequestBody {
-    data: Appdrop.UpdateEnterpriseParams|Appdrop.UpdateOrganizationParams;
-    entity_id: string;
+  data: Appdrop.UpdateEnterpriseParams | Appdrop.UpdateOrganizationParams;
+  entity_id: string;
 }
 
 /**
  * Updates an Enterprise or Organization
  */
 export async function updateEntity<T>(params: UpdateEntityFunctionParams) {
-    try {
-        const {
-            app_config,
-            data,
-            entity_id,
-            livemode
-        } = params;
-        const _: Appdrop.APIRequestEndpoint = 'v1/entities/:entityId';
-        const method: Appdrop.APIRequestMethod = 'PATCH';
-        const request_body: Appdrop.APIRequestBody = {
-            app_config: app_config,
-            livemode: livemode,
-            data: data
-        };
-        const response = await fetch(`${Appdrop.APIRequestBase}/v1/entities/${entity_id}`, {
-            headers: {
-                "Authorization": `Basic ${btoa(app_config.api_key)}`,
-                "Content-Type": 'text/plain'
-            },
-            body: JSON.stringify(request_body),
-            method: method
-        });
-        if (response.status === 200) {
-            const response_json = await response.json(); 
-            return response_json as T;
-        }
-        else {
-            const response_json = await response.json(); 
-            throw new Error(JSON.stringify(response_json,null,'\t'));
-        }
+  try {
+    const {
+      app_config,
+      data,
+      entity_id,
+      livemode
+    } = params;
+    const _: Appdrop.APIRequestEndpoint = 'v1/entities/:entityId';
+    const method: Appdrop.APIRequestMethod = 'PATCH';
+    const request_body: Appdrop.APIRequestBody = {
+      app_config: app_config,
+      livemode: livemode,
+      data: data
+    };
+    const response = await fetch(`${Appdrop.APIRequestBase}/v1/entities/${entity_id}`, {
+      headers: {
+        "Authorization": `Basic ${btoa(app_config.api_key)}`,
+        "Content-Type": 'text/plain'
+      },
+      body: JSON.stringify(request_body),
+      method: method
+    });
+    if (response.status === 200) {
+      const response_json = await response.json();
+      return response_json as T;
     }
-    catch (error) {
-        console.error('updateEntity error', error);
-        return null;
+    else {
+      const response_json = await response.json();
+      throw new Error(JSON.stringify(response_json, null, '\t'));
     }
-}
- 
- /**
- * 
- * **************
- * Orders
- * **************
- * 
- */
- 
-export interface CreateOrderFunctionParams extends Appdrop.APIRequestBody {
-    data: Appdrop.CreateOrderParams;
-    user_id: string;
+  }
+  catch (error) {
+    console.error('updateEntity error', error);
+    return null;
+  }
 }
 
- /**
- * Creates an order
- */
+/**
+* 
+* **************
+* Orders
+* **************
+* 
+*/
+
+export interface CreateOrderFunctionParams extends Appdrop.APIRequestBody {
+  data: Appdrop.CreateOrderParams;
+  user_id: string;
+}
+
+/**
+* Creates an order
+*/
 export async function createOrder(params: CreateOrderFunctionParams) {
-    try {
-        const {
-            app_config,
-            data,
-            livemode,
-            user_id
-        } = params;
-        const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/users/:userId/orders';
-        const method: Appdrop.APIRequestMethod = 'PUT';
-        const request_body: Appdrop.APIRequestBody = {
-            app_config: app_config,
-            livemode: livemode,
-            data: data
-        };
-        const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/users/${user_id}/orders`, {
-            headers: {
-                "Authorization": `Basic ${btoa(app_config.api_key)}`,
-                "Content-Type": 'text/plain'
-            },
-            body: JSON.stringify(request_body),
-            method: method
-        });
-        if (response.status === 200) {
-            const response_json = await response.json(); 
-            return response_json as Appdrop.Order;
-        }
-        else {
-            const response_json = await response.json(); 
-            throw new Error(JSON.stringify(response_json,null,'\t'));
-        }
+  try {
+    const {
+      app_config,
+      data,
+      livemode,
+      user_id
+    } = params;
+    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/users/:userId/orders';
+    const method: Appdrop.APIRequestMethod = 'PUT';
+    const request_body: Appdrop.APIRequestBody = {
+      app_config: app_config,
+      livemode: livemode,
+      data: data
+    };
+    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/users/${user_id}/orders`, {
+      headers: {
+        "Authorization": `Basic ${btoa(app_config.api_key)}`,
+        "Content-Type": 'text/plain'
+      },
+      body: JSON.stringify(request_body),
+      method: method
+    });
+    if (response.status === 200) {
+      const response_json = await response.json();
+      return response_json as Appdrop.Order;
     }
-    catch (error) {
-        console.error('createOrder error', error);
-        return null;
+    else {
+      const response_json = await response.json();
+      throw new Error(JSON.stringify(response_json, null, '\t'));
     }
+  }
+  catch (error) {
+    console.error('createOrder error', error);
+    return null;
+  }
 }
 
 export interface UpdateOrderFunctionParams extends Appdrop.APIRequestBody {
-    data:
-    Appdrop.UpdateOrderParams|
-    Appdrop.RequestReturnParams|
-    Appdrop.AttachOrderPromoParams;
-    order_id: string;
-    user_id: string;
+  data:
+  Appdrop.UpdateOrderParams |
+  Appdrop.RequestReturnParams |
+  Appdrop.AttachOrderPromoParams;
+  order_id: string;
+  user_id: string;
 }
 
 /**
  * Updates an order
  */
 export async function updateOrder(params: UpdateOrderFunctionParams) {
-    try {
-        const {
-            app_config,
-            data,
-            livemode,
-            order_id,
-            user_id
-        } = params;
-        const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/users/:userId/orders/:orderId';
-        const method: Appdrop.APIRequestMethod = 'PATCH';
-        const request_body: Appdrop.APIRequestBody = {
-            app_config: app_config,
-            livemode: livemode,
-            data: data
-        };
-        const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/users/${user_id}/orders/${order_id}`, {
-            headers: {
-                "Authorization": `Basic ${btoa(app_config.api_key)}`,
-                "Content-Type": 'text/plain'
-            },
-            body: JSON.stringify(request_body),
-            method: method
-        });
-        if (response.status === 200) {
-            const response_json = await response.json(); 
-            return response_json as Appdrop.Order;
-        }
-        else {
-            const response_json = await response.json(); 
-            throw new Error(JSON.stringify(response_json,null,'\t'));
-        }
+  try {
+    const {
+      app_config,
+      data,
+      livemode,
+      order_id,
+      user_id
+    } = params;
+    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/users/:userId/orders/:orderId';
+    const method: Appdrop.APIRequestMethod = 'PATCH';
+    const request_body: Appdrop.APIRequestBody = {
+      app_config: app_config,
+      livemode: livemode,
+      data: data
+    };
+    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/users/${user_id}/orders/${order_id}`, {
+      headers: {
+        "Authorization": `Basic ${btoa(app_config.api_key)}`,
+        "Content-Type": 'text/plain'
+      },
+      body: JSON.stringify(request_body),
+      method: method
+    });
+    if (response.status === 200) {
+      const response_json = await response.json();
+      return response_json as Appdrop.Order;
     }
-    catch (error) {
-        console.error('updateOrder error', error);
-        return null;
+    else {
+      const response_json = await response.json();
+      throw new Error(JSON.stringify(response_json, null, '\t'));
     }
+  }
+  catch (error) {
+    console.error('updateOrder error', error);
+    return null;
+  }
 }
 
 export interface ConfirmOrderFunctionParams extends Appdrop.APIRequestBody {
-    data: Appdrop.ConfirmOrderParams;
-    order_id: string;
-    user_id: string;
+  data: Appdrop.ConfirmOrderParams;
+  order_id: string;
+  user_id: string;
 }
 
 /**
  * Confirms an order after the charge was approved
  */
 export async function confirmOrder(params: ConfirmOrderFunctionParams) {
-    try {
-        const {
-            app_config,
-            data,
-            livemode,
-            order_id,
-            user_id
-        } = params;
-        const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/users/:userId/orders/:orderId/confirm';
-        const method: Appdrop.APIRequestMethod = 'POST';
-        const request_body: Appdrop.APIRequestBody = {
-            app_config: app_config,
-            livemode: livemode,
-            data: data
-        };
-        const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/users/${user_id}/orders/${order_id}/confirm`, {
-            headers: {
-                "Authorization": `Basic ${btoa(app_config.api_key)}`,
-                "Content-Type": 'text/plain'
-            },
-            body: JSON.stringify(request_body),
-            method: method
-        });
-        if (response.status === 200) {
-            const response_json = await response.json(); 
-            return response_json as Appdrop.Order;
-        }
-        else {
-            const response_json = await response.json(); 
-            throw new Error(JSON.stringify(response_json,null,'\t'));
-        }
+  try {
+    const {
+      app_config,
+      data,
+      livemode,
+      order_id,
+      user_id
+    } = params;
+    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/users/:userId/orders/:orderId/confirm';
+    const method: Appdrop.APIRequestMethod = 'POST';
+    const request_body: Appdrop.APIRequestBody = {
+      app_config: app_config,
+      livemode: livemode,
+      data: data
+    };
+    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/users/${user_id}/orders/${order_id}/confirm`, {
+      headers: {
+        "Authorization": `Basic ${btoa(app_config.api_key)}`,
+        "Content-Type": 'text/plain'
+      },
+      body: JSON.stringify(request_body),
+      method: method
+    });
+    if (response.status === 200) {
+      const response_json = await response.json();
+      return response_json as Appdrop.Order;
     }
-    catch (error) {
-        console.error('confirmOrder error', error);
-        return null;
+    else {
+      const response_json = await response.json();
+      throw new Error(JSON.stringify(response_json, null, '\t'));
     }
+  }
+  catch (error) {
+    console.error('confirmOrder error', error);
+    return null;
+  }
 }
 
 export interface CancelOrderFunctionParams extends Appdrop.APIRequestBody {
-    data: Appdrop.CancelOrderParams;
-    order_id: string;
-    user_id: string;
+  data: Appdrop.CancelOrderParams;
+  order_id: string;
+  user_id: string;
 }
 
 /**
  * Cancels an order
  */
 export async function cancelOrder(params: CancelOrderFunctionParams) {
-    try {
-        const {
-            app_config,
-            data,
-            order_id,
-            livemode,
-            user_id
-        } = params;
-        const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/users/:userId/orders/:orderId/cancel';
-        const method: Appdrop.APIRequestMethod = 'POST';
-        const request_body: Appdrop.APIRequestBody = {
-            app_config: app_config,
-            livemode: livemode,
-            data: data
-        };
-        const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/users/${user_id}/orders/${order_id}/cancel`, {
-            headers: {
-                "Authorization": `Basic ${btoa(app_config.api_key)}`,
-                "Content-Type": 'text/plain'
-            },
-            body: JSON.stringify(request_body),
-            method: method
-        });
-        if (response.status === 200) {
-            const response_json = await response.json(); 
-            return response_json as Appdrop.Order;
-        }
-        else {
-            const response_json = await response.json(); 
-            throw new Error(JSON.stringify(response_json,null,'\t'));
-        }
+  try {
+    const {
+      app_config,
+      data,
+      order_id,
+      livemode,
+      user_id
+    } = params;
+    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/users/:userId/orders/:orderId/cancel';
+    const method: Appdrop.APIRequestMethod = 'POST';
+    const request_body: Appdrop.APIRequestBody = {
+      app_config: app_config,
+      livemode: livemode,
+      data: data
+    };
+    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/users/${user_id}/orders/${order_id}/cancel`, {
+      headers: {
+        "Authorization": `Basic ${btoa(app_config.api_key)}`,
+        "Content-Type": 'text/plain'
+      },
+      body: JSON.stringify(request_body),
+      method: method
+    });
+    if (response.status === 200) {
+      const response_json = await response.json();
+      return response_json as Appdrop.Order;
     }
-    catch (error) {
-        console.error('cancelOrder error', error);
-        return null;
+    else {
+      const response_json = await response.json();
+      throw new Error(JSON.stringify(response_json, null, '\t'));
     }
+  }
+  catch (error) {
+    console.error('cancelOrder error', error);
+    return null;
+  }
 }
 
- /**
- * 
- * **************
- * Products
- * **************
- * 
- */
- 
+/**
+* 
+* **************
+* Products
+* **************
+* 
+*/
+
 export interface SyncPrintfulProductsFunctionParams extends Appdrop.APIRequestBody {
-    data: Appdrop.SyncPrintfulProductsParams;
-    project_id: string;
+  data: Appdrop.SyncPrintfulProductsParams;
+  project_id: string;
 }
 
- /**
- * Syncs a Printful store to an ECommerce project.
- */
+/**
+* Syncs a Printful store to an ECommerce project.
+*/
 export async function syncPrintfulProducts(params: SyncPrintfulProductsFunctionParams) {
-    try {
-        const {
-            app_config,
-            data,
-            livemode,
-            project_id
-        } = params;
-        const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/syncPrintfulProducts';
-        const method: Appdrop.APIRequestMethod = 'POST';
-        const request_body: Appdrop.APIRequestBody = {
-            app_config: app_config,
-            livemode: livemode,
-            data: data
-        };
-        const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${project_id}/syncPrintfulProducts`, {
-            headers: {
-                "Authorization": `Basic ${btoa(app_config.api_key)}`,
-                "Content-Type": 'text/plain'
-            },
-            body: JSON.stringify(request_body),
-            method: method
-        });
-        if (response.status === 200) {
-            const response_json = await response.json(); 
-            return response_json as Appdrop.ECommerceProject;
-        }
-        else {
-            const response_json = await response.json(); 
-            throw new Error(JSON.stringify(response_json,null,'\t'));
-        }
+  try {
+    const {
+      app_config,
+      data,
+      livemode,
+      project_id
+    } = params;
+    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/syncPrintfulProducts';
+    const method: Appdrop.APIRequestMethod = 'POST';
+    const request_body: Appdrop.APIRequestBody = {
+      app_config: app_config,
+      livemode: livemode,
+      data: data
+    };
+    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${project_id}/syncPrintfulProducts`, {
+      headers: {
+        "Authorization": `Basic ${btoa(app_config.api_key)}`,
+        "Content-Type": 'text/plain'
+      },
+      body: JSON.stringify(request_body),
+      method: method
+    });
+    if (response.status === 200) {
+      const response_json = await response.json();
+      return response_json as Appdrop.ECommerceProject;
     }
-    catch (error) {
-        console.error('syncPrintfulProducts error', error);
-        return null;
+    else {
+      const response_json = await response.json();
+      throw new Error(JSON.stringify(response_json, null, '\t'));
     }
+  }
+  catch (error) {
+    console.error('syncPrintfulProducts error', error);
+    return null;
+  }
 }
- 
- /**
- * 
- * **************
- * Projects
- * **************
- * 
- */
- 
- /**
- * Creates a project template
- */
+
+/**
+* 
+* **************
+* Projects
+* **************
+* 
+*/
+
+/**
+* Creates a project template
+*/
 export interface CreateProjectTemplateFunctionParams extends Appdrop.APIRequestBody {
-    data: Appdrop.CreateProjectTemplateParams;
+  data: Appdrop.CreateProjectTemplateParams;
 }
 
 export async function createProjectTemplate(params: CreateProjectTemplateFunctionParams) {
-    try {
-        const {
-            app_config,
-            data,
-            livemode
-        } = params;
-        const _: Appdrop.APIRequestEndpoint = 'v1/projectTemplates';
-        const method: Appdrop.APIRequestMethod = 'PUT';
-        const request_body: Appdrop.APIRequestBody = {
-            app_config: app_config,
-            livemode: livemode,
-            data: data
-        };
-        const response = await fetch(`${Appdrop.APIRequestBase}/v1/projectTemplates`, {
-            headers: {
-                "Authorization": `Basic ${btoa(app_config.api_key)}`,
-                "Content-Type": 'text/plain'
-            },
-            body: JSON.stringify(request_body),
-            method: method
-        });
-        if (response.status === 200) {
-            const response_json = await response.json(); 
-            return response_json as Appdrop.ProjectTemplate;
-        }
-        else {
-            const response_json = await response.json(); 
-            throw new Error(JSON.stringify(response_json,null,'\t'));
-        }
+  try {
+    const {
+      app_config,
+      data,
+      livemode
+    } = params;
+    const _: Appdrop.APIRequestEndpoint = 'v1/projectTemplates';
+    const method: Appdrop.APIRequestMethod = 'PUT';
+    const request_body: Appdrop.APIRequestBody = {
+      app_config: app_config,
+      livemode: livemode,
+      data: data
+    };
+    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projectTemplates`, {
+      headers: {
+        "Authorization": `Basic ${btoa(app_config.api_key)}`,
+        "Content-Type": 'text/plain'
+      },
+      body: JSON.stringify(request_body),
+      method: method
+    });
+    if (response.status === 200) {
+      const response_json = await response.json();
+      return response_json as Appdrop.ProjectTemplate;
     }
-    catch (error) {
-        console.error('createProjectTemplate error', error);
-        return null;
+    else {
+      const response_json = await response.json();
+      throw new Error(JSON.stringify(response_json, null, '\t'));
     }
+  }
+  catch (error) {
+    console.error('createProjectTemplate error', error);
+    return null;
+  }
 }
 
 export interface UpdateProjectTemplateFunctionParams extends Appdrop.APIRequestBody {
-    data: Appdrop.UpdateProjectTemplateParams;
-    project_template_id: string;
+  data: Appdrop.UpdateProjectTemplateParams;
+  project_template_id: string;
 }
 
 /**
  * Updates a project template
  */
-export async function updateProjectTemplate(params: UpdateProjectTemplateFunctionParams)  {
-    try {
-        const {
-            app_config,
-            data,
-            livemode,
-            project_template_id
-        } = params;
-        const _: Appdrop.APIRequestEndpoint = 'v1/projectTemplates/:projectTemplateId';
-        const method: Appdrop.APIRequestMethod = 'PATCH';
-        const request_body: Appdrop.APIRequestBody = {
-            app_config: app_config,
-            livemode: livemode,
-            data: data
-        };
-        const response = await fetch(`${Appdrop.APIRequestBase}/v1/projectTemplates/${project_template_id}`, {
-            headers: {
-                "Authorization": `Basic ${btoa(app_config.api_key)}`,
-                "Content-Type": 'text/plain'
-            },
-            body: JSON.stringify(request_body),
-            method: method
-        });
-        if (response.status === 200) {
-            const response_json = await response.json(); 
-            return response_json as Appdrop.ProjectTemplate;
-        }
-        else {
-            const response_json = await response.json(); 
-            throw new Error(JSON.stringify(response_json,null,'\t'));
-        }
+export async function updateProjectTemplate(params: UpdateProjectTemplateFunctionParams) {
+  try {
+    const {
+      app_config,
+      data,
+      livemode,
+      project_template_id
+    } = params;
+    const _: Appdrop.APIRequestEndpoint = 'v1/projectTemplates/:projectTemplateId';
+    const method: Appdrop.APIRequestMethod = 'PATCH';
+    const request_body: Appdrop.APIRequestBody = {
+      app_config: app_config,
+      livemode: livemode,
+      data: data
+    };
+    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projectTemplates/${project_template_id}`, {
+      headers: {
+        "Authorization": `Basic ${btoa(app_config.api_key)}`,
+        "Content-Type": 'text/plain'
+      },
+      body: JSON.stringify(request_body),
+      method: method
+    });
+    if (response.status === 200) {
+      const response_json = await response.json();
+      return response_json as Appdrop.ProjectTemplate;
     }
-    catch (error) {
-        console.error('updateProjectTemplate error', error);
-        return null;
+    else {
+      const response_json = await response.json();
+      throw new Error(JSON.stringify(response_json, null, '\t'));
     }
+  }
+  catch (error) {
+    console.error('updateProjectTemplate error', error);
+    return null;
+  }
 }
 
 export interface CreateProjectFunctionParams extends Appdrop.APIRequestBody {
-    data: 
-    Appdrop.CreateECommerceProjectParams|
-    Appdrop.CreateMarketplaceProjectParams;
+  data:
+  Appdrop.CreateECommerceProjectParams |
+  Appdrop.CreateMarketplaceProjectParams;
 }
 
 /**
@@ -831,48 +831,48 @@ export interface CreateProjectFunctionParams extends Appdrop.APIRequestBody {
  * @Important T must be `Appdrop.ECommerceProject` or `Appdrop.MarketplaceProject`
  */
 export async function createProject<T>(params: CreateProjectFunctionParams) {
-    try {
-        const {
-            app_config,
-            data,
-            livemode
-        } = params;
-        const _: Appdrop.APIRequestEndpoint = 'v1/projects';
-        const method: Appdrop.APIRequestMethod = 'PUT';
-        const request_body: Appdrop.APIRequestBody = {
-            app_config: app_config,
-            livemode: livemode,
-            data: data
-        };
-        const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects`, {
-            headers: {
-                "Authorization": `Basic ${btoa(app_config.api_key)}`,
-                "Content-Type": 'text/plain'
-            },
-            body: JSON.stringify(request_body),
-            method: method
-        });
-        if (response.status === 200) {
-            const response_json = await response.json();
-            return response_json as T;
-        }
-        else {
-            const response_json = await response.json(); 
-            throw new Error(JSON.stringify(response_json,null,'\t'));
-        }
+  try {
+    const {
+      app_config,
+      data,
+      livemode
+    } = params;
+    const _: Appdrop.APIRequestEndpoint = 'v1/projects';
+    const method: Appdrop.APIRequestMethod = 'PUT';
+    const request_body: Appdrop.APIRequestBody = {
+      app_config: app_config,
+      livemode: livemode,
+      data: data
+    };
+    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects`, {
+      headers: {
+        "Authorization": `Basic ${btoa(app_config.api_key)}`,
+        "Content-Type": 'text/plain'
+      },
+      body: JSON.stringify(request_body),
+      method: method
+    });
+    if (response.status === 200) {
+      const response_json = await response.json();
+      return response_json as T;
     }
-    catch (error) {
-        console.error('createProject error', error);
-        return null;
+    else {
+      const response_json = await response.json();
+      throw new Error(JSON.stringify(response_json, null, '\t'));
     }
+  }
+  catch (error) {
+    console.error('createProject error', error);
+    return null;
+  }
 }
 
 export interface UpdateProjectFunctionParams extends Appdrop.APIRequestBody {
-    data: 
-    Appdrop.UpdateECommerceProjectParams|
-    Appdrop.UpdateMarketplaceProjectParams;
-    project_id: string;
-    project_type: Appdrop.ProjectType;
+  data:
+  Appdrop.UpdateECommerceProjectParams |
+  Appdrop.UpdateMarketplaceProjectParams;
+  project_id: string;
+  project_type: Appdrop.ProjectType;
 }
 
 /**
@@ -881,49 +881,49 @@ export interface UpdateProjectFunctionParams extends Appdrop.APIRequestBody {
  * @Important T must be `Appdrop.ECommerceProject` or `Appdrop.MarketplaceProject`
  */
 export async function updateProject<T>(params: UpdateProjectFunctionParams) {
-    try {
-        const {
-            app_config,
-            data,
-            livemode,
-            project_id
-        } = params;
-        const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId';
-        const method: Appdrop.APIRequestMethod = 'PATCH';
-        const request_body: Appdrop.APIRequestBody = {
-            app_config: app_config,
-            livemode: livemode,
-            data: data
-        };
-        const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${project_id}`, {
-            headers: {
-                "Authorization": `Basic ${btoa(app_config.api_key)}`,
-                "Content-Type": 'text/plain'
-            },
-            body: JSON.stringify(request_body),
-            method: method
-        });
-        if (response.status === 200) {
-            const response_json = await response.json(); 
-            return response_json as T;
-        }
-        else {
-            const response_json = await response.json(); 
-            throw new Error(JSON.stringify(response_json,null,'\t'));
-        }
+  try {
+    const {
+      app_config,
+      data,
+      livemode,
+      project_id
+    } = params;
+    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId';
+    const method: Appdrop.APIRequestMethod = 'PATCH';
+    const request_body: Appdrop.APIRequestBody = {
+      app_config: app_config,
+      livemode: livemode,
+      data: data
+    };
+    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${project_id}`, {
+      headers: {
+        "Authorization": `Basic ${btoa(app_config.api_key)}`,
+        "Content-Type": 'text/plain'
+      },
+      body: JSON.stringify(request_body),
+      method: method
+    });
+    if (response.status === 200) {
+      const response_json = await response.json();
+      return response_json as T;
     }
-    catch (error) {
-        console.error('updateProject error', error);
-        return null;
+    else {
+      const response_json = await response.json();
+      throw new Error(JSON.stringify(response_json, null, '\t'));
     }
+  }
+  catch (error) {
+    console.error('updateProject error', error);
+    return null;
+  }
 }
 
 export interface CreateAppFunctionParams extends Appdrop.APIRequestBody {
-    data: 
-    Appdrop.CreateAppAndroidParams|
-    Appdrop.CreateAppIOSParams|
-    Appdrop.CreateAppWebParams;
-    project_id: string;
+  data:
+  Appdrop.CreateAppAndroidParams |
+  Appdrop.CreateAppIOSParams |
+  Appdrop.CreateAppWebParams;
+  project_id: string;
 }
 
 /**
@@ -932,50 +932,50 @@ export interface CreateAppFunctionParams extends Appdrop.APIRequestBody {
  * @Important T must be `Appdrop.AppAndroid`, `Appdrop.AppIOS` or `Appdrop.AppWeb`
  */
 export async function createApp<T>(params: CreateAppFunctionParams) {
-    try {
-        const {
-            app_config,
-            data,
-            livemode,
-            project_id
-        } = params;
-        const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/apps';
-        const method: Appdrop.APIRequestMethod = 'PUT';
-        const request_body: Appdrop.APIRequestBody = {
-            app_config: app_config,
-            livemode: livemode,
-            data: data
-        };
-        const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${project_id}/apps`, {
-            headers: {
-                "Authorization": `Basic ${btoa(app_config.api_key)}`,
-                "Content-Type": 'text/plain'
-            },
-            body: JSON.stringify(request_body),
-            method: method
-        });
-        if (response.status === 200) {
-            const response_json = await response.json(); 
-            return response_json as T;
-        }
-        else {
-            const response_json = await response.json(); 
-            throw new Error(JSON.stringify(response_json,null,'\t'));
-        }
+  try {
+    const {
+      app_config,
+      data,
+      livemode,
+      project_id
+    } = params;
+    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/apps';
+    const method: Appdrop.APIRequestMethod = 'PUT';
+    const request_body: Appdrop.APIRequestBody = {
+      app_config: app_config,
+      livemode: livemode,
+      data: data
+    };
+    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${project_id}/apps`, {
+      headers: {
+        "Authorization": `Basic ${btoa(app_config.api_key)}`,
+        "Content-Type": 'text/plain'
+      },
+      body: JSON.stringify(request_body),
+      method: method
+    });
+    if (response.status === 200) {
+      const response_json = await response.json();
+      return response_json as T;
     }
-    catch (error) {
-        console.error('createApp error', error);
-        return null;
+    else {
+      const response_json = await response.json();
+      throw new Error(JSON.stringify(response_json, null, '\t'));
     }
+  }
+  catch (error) {
+    console.error('createApp error', error);
+    return null;
+  }
 }
 
 export interface UpdateAppFunctionParams extends Appdrop.APIRequestBody {
-    app_id: string;
-    data: 
-    Appdrop.UpdateAppAndroidParams|
-    Appdrop.UpdateAppIOSParams|
-    Appdrop.UpdateAppWebParams;
-    project_id: string;
+  app_id: string;
+  data:
+  Appdrop.UpdateAppAndroidParams |
+  Appdrop.UpdateAppIOSParams |
+  Appdrop.UpdateAppWebParams;
+  project_id: string;
 }
 
 /**
@@ -984,50 +984,50 @@ export interface UpdateAppFunctionParams extends Appdrop.APIRequestBody {
  * @Important T must be `Appdrop.AppAndroid`, `Appdrop.AppIOS` or `Appdrop.AppWeb`
  */
 export async function updateApp<T>(params: UpdateAppFunctionParams) {
-    try {
-        const {
-            app_config,
-            app_id,
-            data,
-            project_id,
-            livemode
-        } = params;
-        const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/apps/:appId';
-        const method: Appdrop.APIRequestMethod = 'PATCH';
-        const request_body: Appdrop.APIRequestBody = {
-            app_config: app_config,
-            livemode: livemode,
-            data: data
-        };
-        const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${project_id}/apps/${app_id}`, {
-            headers: {
-                "Authorization": `Basic ${btoa(app_config.api_key)}`,
-                "Content-Type": 'text/plain'
-            },
-            body: JSON.stringify(request_body),
-            method: method
-        });
-        if (response.status === 200) {
-            const response_json = await response.json(); 
-            return response_json as T;
-        }
-        else {
-            const response_json = await response.json(); 
-            throw new Error(JSON.stringify(response_json,null,'\t'));
-        }
+  try {
+    const {
+      app_config,
+      app_id,
+      data,
+      project_id,
+      livemode
+    } = params;
+    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/apps/:appId';
+    const method: Appdrop.APIRequestMethod = 'PATCH';
+    const request_body: Appdrop.APIRequestBody = {
+      app_config: app_config,
+      livemode: livemode,
+      data: data
+    };
+    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${project_id}/apps/${app_id}`, {
+      headers: {
+        "Authorization": `Basic ${btoa(app_config.api_key)}`,
+        "Content-Type": 'text/plain'
+      },
+      body: JSON.stringify(request_body),
+      method: method
+    });
+    if (response.status === 200) {
+      const response_json = await response.json();
+      return response_json as T;
     }
-    catch (error) {
-        console.error('updateApp error', error);
-        return null;
+    else {
+      const response_json = await response.json();
+      throw new Error(JSON.stringify(response_json, null, '\t'));
     }
+  }
+  catch (error) {
+    console.error('updateApp error', error);
+    return null;
+  }
 }
 
 export interface InitAppStateFunctionParams extends Appdrop.APIRequestBody {
-    data:
-    Appdrop.InitCloudAppParams|
-    Appdrop.InitECommerceAppParams|
-    Appdrop.InitMarketplaceAppParams;
-    project_type: Appdrop.ProjectType;
+  data:
+  Appdrop.InitCloudAppParams |
+  Appdrop.InitECommerceAppParams |
+  Appdrop.InitMarketplaceAppParams;
+  project_type: Appdrop.ProjectType;
 }
 
 /**
@@ -1040,52 +1040,52 @@ export interface InitAppStateFunctionParams extends Appdrop.APIRequestBody {
  * 
  */
 export async function initAppState<T>(params: InitAppStateFunctionParams) {
-    try {
-        const {
-            app_config,
-            data,
-            livemode,
-            project_type
-        } = params;
-        const _: Appdrop.APIRequestEndpoint = 'v1/initAppState/' + project_type as 
-        'v1/initAppState/cloud'|
-        'v1/initAppState/ecommerce'|
-        'v1/initAppState/marketplace';
-        const method: Appdrop.APIRequestMethod = 'POST';
-        const request_body: Appdrop.APIRequestBody = {
-            app_config: app_config,
-            livemode: livemode,
-            data: data
-        };
-        const response = await fetch(`${Appdrop.APIRequestBase}/v1/initAppState/${project_type}`, {
-            headers: {
-                "Authorization": `Basic ${btoa(app_config.api_key)}`,
-                "Content-Type": 'text/plain'
-            },
-            body: JSON.stringify(request_body),
-            method: method
-        });
-        if (response.status === 200) {
-            const response_json = await response.json(); 
-            return response_json as T;
-        }
-        else {
-            const response_json = await response.json(); 
-            throw new Error(JSON.stringify(response_json,null,'\t'));
-        }
+  try {
+    const {
+      app_config,
+      data,
+      livemode,
+      project_type
+    } = params;
+    const _: Appdrop.APIRequestEndpoint = 'v1/initAppState/' + project_type as
+      'v1/initAppState/cloud' |
+      'v1/initAppState/ecommerce' |
+      'v1/initAppState/marketplace';
+    const method: Appdrop.APIRequestMethod = 'POST';
+    const request_body: Appdrop.APIRequestBody = {
+      app_config: app_config,
+      livemode: livemode,
+      data: data
+    };
+    const response = await fetch(`${Appdrop.APIRequestBase}/v1/initAppState/${project_type}`, {
+      headers: {
+        "Authorization": `Basic ${btoa(app_config.api_key)}`,
+        "Content-Type": 'text/plain'
+      },
+      body: JSON.stringify(request_body),
+      method: method
+    });
+    if (response.status === 200) {
+      const response_json = await response.json();
+      return response_json as T;
     }
-    catch (error) {
-        console.error('initCloudAppState error', error);
-        return null;
+    else {
+      const response_json = await response.json();
+      throw new Error(JSON.stringify(response_json, null, '\t'));
     }
+  }
+  catch (error) {
+    console.error('initCloudAppState error', error);
+    return null;
+  }
 }
 
 export interface UpdateUserFunctionParams extends Appdrop.APIRequestBody {
-    data: 
-    Appdrop.UpdateProjectUserParams|
-    Appdrop.UpdateMarketplaceProjectUserParams|
-    Appdrop.UpdateECommerceProjectUserParams;
-    user_id: string;
+  data:
+  Appdrop.UpdateProjectUserParams |
+  Appdrop.UpdateMarketplaceProjectUserParams |
+  Appdrop.UpdateECommerceProjectUserParams;
+  user_id: string;
 }
 
 /**
@@ -1099,50 +1099,50 @@ export interface UpdateUserFunctionParams extends Appdrop.APIRequestBody {
  * `Appdrop.MarketplaceProjectUser`
  */
 export async function updateUser<T>(params: UpdateUserFunctionParams) {
-    try {
-        const {
-            app_config,
-            data,
-            livemode,
-            user_id
-        } = params;
-        const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/users/:userId';
-        const method: Appdrop.APIRequestMethod = 'PATCH';
-        const request_body: Appdrop.APIRequestBody = {
-            app_config: app_config,
-            livemode: livemode,
-            data: data
-        };
-        const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/users/${user_id}`, {
-            headers: {
-                "Authorization": `Basic ${btoa(app_config.api_key)}`,
-                "Content-Type": 'text/plain'
-            },
-            body: JSON.stringify(request_body),
-            method: method
-        });
-        if (response.status === 200) {
-            const response_json = await response.json(); 
-            return response_json as T;
-        }
-        else {
-            const response_json = await response.json(); 
-            throw new Error(JSON.stringify(response_json,null,'\t'));
-        }
+  try {
+    const {
+      app_config,
+      data,
+      livemode,
+      user_id
+    } = params;
+    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/users/:userId';
+    const method: Appdrop.APIRequestMethod = 'PATCH';
+    const request_body: Appdrop.APIRequestBody = {
+      app_config: app_config,
+      livemode: livemode,
+      data: data
+    };
+    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/users/${user_id}`, {
+      headers: {
+        "Authorization": `Basic ${btoa(app_config.api_key)}`,
+        "Content-Type": 'text/plain'
+      },
+      body: JSON.stringify(request_body),
+      method: method
+    });
+    if (response.status === 200) {
+      const response_json = await response.json();
+      return response_json as T;
     }
-    catch (error) {
-        console.error('updateUser error', error);
-        return null;
+    else {
+      const response_json = await response.json();
+      throw new Error(JSON.stringify(response_json, null, '\t'));
     }
+  }
+  catch (error) {
+    console.error('updateUser error', error);
+    return null;
+  }
 }
 
 export interface CreatePromoFunctionParams extends Appdrop.APIRequestBody {
-    data: Appdrop.CreatePromoParams;
-    project_id: string;
+  data: Appdrop.CreatePromoParams;
+  project_id: string;
 }
 
 export interface CreatePostFunctionParams extends Appdrop.APIRequestBody {
-    data: Appdrop.CreatePostParams;
+  data: Appdrop.CreatePostParams;
 }
 
 /**
@@ -1150,46 +1150,46 @@ export interface CreatePostFunctionParams extends Appdrop.APIRequestBody {
  * 
  * @Important T must inherit from Appdrop.Post
  */
- export async function createPost<T>(params: CreatePostFunctionParams) {
-    try {
-        const {
-            app_config,
-            data,
-            livemode
-        } = params;
-        const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/posts';
-        const method: Appdrop.APIRequestMethod = 'PUT';
-        const request_body: Appdrop.APIRequestBody = {
-            app_config: app_config,
-            livemode: livemode,
-            data: data
-        };
-        const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/posts`, {
-            headers: {
-                "Authorization": `Basic ${btoa(app_config.api_key)}`,
-                "Content-Type": 'text/plain'
-            },
-            body: JSON.stringify(request_body),
-            method: method
-        });
-        if (response.status === 200) {
-            const response_json = await response.json();
-            return response_json as T;
-        }
-        else {
-            const response_json = await response.json(); 
-            throw new Error(JSON.stringify(response_json,null,'\t'));
-        }
+export async function createPost<T>(params: CreatePostFunctionParams) {
+  try {
+    const {
+      app_config,
+      data,
+      livemode
+    } = params;
+    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/posts';
+    const method: Appdrop.APIRequestMethod = 'PUT';
+    const request_body: Appdrop.APIRequestBody = {
+      app_config: app_config,
+      livemode: livemode,
+      data: data
+    };
+    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/posts`, {
+      headers: {
+        "Authorization": `Basic ${btoa(app_config.api_key)}`,
+        "Content-Type": 'text/plain'
+      },
+      body: JSON.stringify(request_body),
+      method: method
+    });
+    if (response.status === 200) {
+      const response_json = await response.json();
+      return response_json as T;
     }
-    catch (error) {
-        console.error('createPost error', error);
-        return null;
+    else {
+      const response_json = await response.json();
+      throw new Error(JSON.stringify(response_json, null, '\t'));
     }
+  }
+  catch (error) {
+    console.error('createPost error', error);
+    return null;
+  }
 }
 
 export interface UpdatePostFunctionParams extends Appdrop.APIRequestBody {
-    data: Appdrop.UpdatePostParams;
-    post_id: string;
+  data: Appdrop.UpdatePostParams;
+  post_id: string;
 }
 
 /**
@@ -1198,179 +1198,179 @@ export interface UpdatePostFunctionParams extends Appdrop.APIRequestBody {
  * @Important T must inherit from Appdrop.Post
  */
 export async function updatePost<T>(params: UpdatePostFunctionParams) {
-    try {
-        const {
-            app_config,
-            data,
-            livemode,
-            post_id
-        } = params;
-        const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/posts/:postId';
-        const method: Appdrop.APIRequestMethod = 'PATCH';
-        const request_body: Appdrop.APIRequestBody = {
-            app_config: app_config,
-            livemode: livemode,
-            data: data
-        };
-        const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/posts/${post_id}`, {
-            headers: {
-                "Authorization": `Basic ${btoa(app_config.api_key)}`,
-                "Content-Type": 'text/plain'
-            },
-            body: JSON.stringify(request_body),
-            method: method
-        });
-        if (response.status === 200) {
-            const response_json = await response.json(); 
-            return response_json as T;
-        }
-        else {
-            const response_json = await response.json(); 
-            throw new Error(JSON.stringify(response_json,null,'\t'));
-        }
+  try {
+    const {
+      app_config,
+      data,
+      livemode,
+      post_id
+    } = params;
+    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/posts/:postId';
+    const method: Appdrop.APIRequestMethod = 'PATCH';
+    const request_body: Appdrop.APIRequestBody = {
+      app_config: app_config,
+      livemode: livemode,
+      data: data
+    };
+    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/posts/${post_id}`, {
+      headers: {
+        "Authorization": `Basic ${btoa(app_config.api_key)}`,
+        "Content-Type": 'text/plain'
+      },
+      body: JSON.stringify(request_body),
+      method: method
+    });
+    if (response.status === 200) {
+      const response_json = await response.json();
+      return response_json as T;
     }
-    catch (error) {
-        console.error('updatePost error', error);
-        return null;
+    else {
+      const response_json = await response.json();
+      throw new Error(JSON.stringify(response_json, null, '\t'));
     }
+  }
+  catch (error) {
+    console.error('updatePost error', error);
+    return null;
+  }
 }
 
 /**
  * Creates a promo.
  */
 export async function createPromo(params: CreatePromoFunctionParams) {
-        try {
-        const {
-            app_config,
-            data,
-            livemode,
-            project_id,
-        } = params;
-        const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/promos';
-        const method: Appdrop.APIRequestMethod = 'PUT';
-        const request_body: Appdrop.APIRequestBody = {
-            app_config: app_config,
-            livemode: livemode,
-            data: data
-        };
-        const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${project_id}/promos`, {
-            headers: {
-                "Authorization": `Basic ${btoa(app_config.api_key)}`,
-                "Content-Type": 'text/plain'
-            },
-            body: JSON.stringify(request_body),
-            method: method
-        });
-        if (response.status === 200) {
-            const response_json = await response.json(); 
-            return response_json as Appdrop.Promo;
-        }
-        else {
-            const response_json = await response.json(); 
-            throw new Error(JSON.stringify(response_json,null,'\t'));
-        }
+  try {
+    const {
+      app_config,
+      data,
+      livemode,
+      project_id,
+    } = params;
+    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/promos';
+    const method: Appdrop.APIRequestMethod = 'PUT';
+    const request_body: Appdrop.APIRequestBody = {
+      app_config: app_config,
+      livemode: livemode,
+      data: data
+    };
+    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${project_id}/promos`, {
+      headers: {
+        "Authorization": `Basic ${btoa(app_config.api_key)}`,
+        "Content-Type": 'text/plain'
+      },
+      body: JSON.stringify(request_body),
+      method: method
+    });
+    if (response.status === 200) {
+      const response_json = await response.json();
+      return response_json as Appdrop.Promo;
     }
-    catch (error) {
-        console.error('createPromo error', error);
-        return null;
+    else {
+      const response_json = await response.json();
+      throw new Error(JSON.stringify(response_json, null, '\t'));
     }
+  }
+  catch (error) {
+    console.error('createPromo error', error);
+    return null;
+  }
 }
 
 export interface UpdatePromoFunctionParams extends Appdrop.APIRequestBody {
-    data: Appdrop.UpdatePromoParams;
-    project_id: string;
-    promo_id: string;
+  data: Appdrop.UpdatePromoParams;
+  project_id: string;
+  promo_id: string;
 }
 
 /**
  * Updates a promo.
  */
 export async function updatePromo(params: UpdatePromoFunctionParams) {
-        try {
-        const {
-            app_config,
-            data,
-            livemode,
-            project_id,
-            promo_id
-        } = params;
-        const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/promos/:promoId';
-        const method: Appdrop.APIRequestMethod = 'PATCH';
-        const request_body: Appdrop.APIRequestBody = {
-            app_config: app_config,
-            livemode: livemode,
-            data: data
-        };
-        const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${project_id}/promos/${promo_id}`, {
-            headers: {
-                "Authorization": `Basic ${btoa(app_config.api_key)}`,
-                "Content-Type": 'text/plain'
-            },
-            body: JSON.stringify(request_body),
-            method: method
-        });
-        if (response.status === 200) {
-            const response_json = await response.json(); 
-            return response_json as Appdrop.Promo;
-        }
-        else {
-            const response_json = await response.json(); 
-            throw new Error(JSON.stringify(response_json,null,'\t'));
-        }
+  try {
+    const {
+      app_config,
+      data,
+      livemode,
+      project_id,
+      promo_id
+    } = params;
+    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/promos/:promoId';
+    const method: Appdrop.APIRequestMethod = 'PATCH';
+    const request_body: Appdrop.APIRequestBody = {
+      app_config: app_config,
+      livemode: livemode,
+      data: data
+    };
+    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${project_id}/promos/${promo_id}`, {
+      headers: {
+        "Authorization": `Basic ${btoa(app_config.api_key)}`,
+        "Content-Type": 'text/plain'
+      },
+      body: JSON.stringify(request_body),
+      method: method
+    });
+    if (response.status === 200) {
+      const response_json = await response.json();
+      return response_json as Appdrop.Promo;
     }
-    catch (error) {
-        console.error('updatePromo error', error);
-        return null;
+    else {
+      const response_json = await response.json();
+      throw new Error(JSON.stringify(response_json, null, '\t'));
     }
+  }
+  catch (error) {
+    console.error('updatePromo error', error);
+    return null;
+  }
 }
 
 export interface CreateRemoteAssetFunctionParams extends Appdrop.APIRequestBody {
-    data: Appdrop.CreateRemoteAssetParams;
+  data: Appdrop.CreateRemoteAssetParams;
 }
 
 /**
  * Creates a remote_asset.
  */
- export async function createRemoteAsset(params: CreateRemoteAssetFunctionParams) {
-    try {
-        const {
-            app_config,
-            data,
-            livemode
-        } = params;
-        const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/remoteAssets';
-        const method: Appdrop.APIRequestMethod = 'PUT';
-        const request_body: Appdrop.APIRequestBody = {
-            app_config: app_config,
-            livemode: livemode,
-            data: data
-        };
-        const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/remoteAssets`, {
-            headers: {
-                "Authorization": `Basic ${btoa(app_config.api_key)}`,
-                "Content-Type": 'text/plain'
-            },
-            body: JSON.stringify(request_body),
-            method: method
-        });
-        if (response.status === 200) {
-            const response_json = await response.json();
-            return response_json as Appdrop.RemoteAsset;
-        }
-        else {
-            const response_json = await response.json(); 
-            throw new Error(JSON.stringify(response_json,null,'\t'));
-        }
+export async function createRemoteAsset(params: CreateRemoteAssetFunctionParams) {
+  try {
+    const {
+      app_config,
+      data,
+      livemode
+    } = params;
+    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/remoteAssets';
+    const method: Appdrop.APIRequestMethod = 'PUT';
+    const request_body: Appdrop.APIRequestBody = {
+      app_config: app_config,
+      livemode: livemode,
+      data: data
+    };
+    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/remoteAssets`, {
+      headers: {
+        "Authorization": `Basic ${btoa(app_config.api_key)}`,
+        "Content-Type": 'text/plain'
+      },
+      body: JSON.stringify(request_body),
+      method: method
+    });
+    if (response.status === 200) {
+      const response_json = await response.json();
+      return response_json as Appdrop.RemoteAsset;
     }
-    catch (error) {
-        console.error('createRemoteAsset error', error);
-        return null;
+    else {
+      const response_json = await response.json();
+      throw new Error(JSON.stringify(response_json, null, '\t'));
     }
+  }
+  catch (error) {
+    console.error('createRemoteAsset error', error);
+    return null;
+  }
 }
 
 export interface UpdateRemoteAssetFunctionParams extends Appdrop.APIRequestBody {
-    data: Appdrop.UpdateRemoteAssetParams;
-    remote_asset_id: string;
+  data: Appdrop.UpdateRemoteAssetParams;
+  remote_asset_id: string;
 }
 
 /**
@@ -1379,45 +1379,45 @@ export interface UpdateRemoteAssetFunctionParams extends Appdrop.APIRequestBody 
  * @Important T must inherit from Appdrop.RemoteAsset
  */
 export async function updateRemoteAsset(params: UpdateRemoteAssetFunctionParams) {
-    try {
-        const {
-            app_config,
-            data,
-            livemode,
-            remote_asset_id
-        } = params;
-        const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/remoteAssets/:remoteAssetId';
-        const method: Appdrop.APIRequestMethod = 'PATCH';
-        const request_body: Appdrop.APIRequestBody = {
-            app_config: app_config,
-            livemode: livemode,
-            data: data
-        };
-        const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/remoteAssets/${remote_asset_id}`, {
-            headers: {
-                "Authorization": `Basic ${btoa(app_config.api_key)}`,
-                "Content-Type": 'text/plain'
-            },
-            body: JSON.stringify(request_body),
-            method: method
-        });
-        if (response.status === 200) {
-            const response_json = await response.json(); 
-            return response_json as Appdrop.RemoteAsset;
-        }
-        else {
-            const response_json = await response.json(); 
-            throw new Error(JSON.stringify(response_json,null,'\t'));
-        }
+  try {
+    const {
+      app_config,
+      data,
+      livemode,
+      remote_asset_id
+    } = params;
+    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/remoteAssets/:remoteAssetId';
+    const method: Appdrop.APIRequestMethod = 'PATCH';
+    const request_body: Appdrop.APIRequestBody = {
+      app_config: app_config,
+      livemode: livemode,
+      data: data
+    };
+    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/remoteAssets/${remote_asset_id}`, {
+      headers: {
+        "Authorization": `Basic ${btoa(app_config.api_key)}`,
+        "Content-Type": 'text/plain'
+      },
+      body: JSON.stringify(request_body),
+      method: method
+    });
+    if (response.status === 200) {
+      const response_json = await response.json();
+      return response_json as Appdrop.RemoteAsset;
     }
-    catch (error) {
-        console.error('updateRemoteAsset error', error);
-        return null;
+    else {
+      const response_json = await response.json();
+      throw new Error(JSON.stringify(response_json, null, '\t'));
     }
+  }
+  catch (error) {
+    console.error('updateRemoteAsset error', error);
+    return null;
+  }
 }
 
 export interface CreateThreadFunctionParams extends Appdrop.APIRequestBody {
-    data: Appdrop.CreateThreadParams;
+  data: Appdrop.CreateThreadParams;
 }
 
 /**
@@ -1425,46 +1425,46 @@ export interface CreateThreadFunctionParams extends Appdrop.APIRequestBody {
  * 
  * @Important T must inherit from Appdrop.Thread
  */
- export async function createThread<T>(params: CreateThreadFunctionParams) {
-    try {
-        const {
-            app_config,
-            data,
-            livemode
-        } = params;
-        const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/threads';
-        const method: Appdrop.APIRequestMethod = 'PUT';
-        const request_body: Appdrop.APIRequestBody = {
-            app_config: app_config,
-            livemode: livemode,
-            data: data
-        };
-        const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/threads`, {
-            headers: {
-                "Authorization": `Basic ${btoa(app_config.api_key)}`,
-                "Content-Type": 'text/plain'
-            },
-            body: JSON.stringify(request_body),
-            method: method
-        });
-        if (response.status === 200) {
-            const response_json = await response.json();
-            return response_json as T;
-        }
-        else {
-            const response_json = await response.json(); 
-            throw new Error(JSON.stringify(response_json,null,'\t'));
-        }
+export async function createThread<T>(params: CreateThreadFunctionParams) {
+  try {
+    const {
+      app_config,
+      data,
+      livemode
+    } = params;
+    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/threads';
+    const method: Appdrop.APIRequestMethod = 'PUT';
+    const request_body: Appdrop.APIRequestBody = {
+      app_config: app_config,
+      livemode: livemode,
+      data: data
+    };
+    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/threads`, {
+      headers: {
+        "Authorization": `Basic ${btoa(app_config.api_key)}`,
+        "Content-Type": 'text/plain'
+      },
+      body: JSON.stringify(request_body),
+      method: method
+    });
+    if (response.status === 200) {
+      const response_json = await response.json();
+      return response_json as T;
     }
-    catch (error) {
-        console.error('createThread error', error);
-        return null;
+    else {
+      const response_json = await response.json();
+      throw new Error(JSON.stringify(response_json, null, '\t'));
     }
+  }
+  catch (error) {
+    console.error('createThread error', error);
+    return null;
+  }
 }
 
 export interface UpdateThreadFunctionParams extends Appdrop.APIRequestBody {
-    data: Appdrop.UpdateThreadParams;
-    thread_id: string;
+  data: Appdrop.UpdateThreadParams;
+  thread_id: string;
 }
 
 /**
@@ -1473,39 +1473,39 @@ export interface UpdateThreadFunctionParams extends Appdrop.APIRequestBody {
  * @Important T must inherit from Appdrop.Thread
  */
 export async function updateThread<T>(params: UpdateThreadFunctionParams) {
-    try {
-        const {
-            app_config,
-            data,
-            livemode,
-            thread_id
-        } = params;
-        const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/threads/:threadId';
-        const method: Appdrop.APIRequestMethod = 'PATCH';
-        const request_body: Appdrop.APIRequestBody = {
-            app_config: app_config,
-            livemode: livemode,
-            data: data
-        };
-        const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/threads/${thread_id}`, {
-            headers: {
-                "Authorization": `Basic ${btoa(app_config.api_key)}`,
-                "Content-Type": 'text/plain'
-            },
-            body: JSON.stringify(request_body),
-            method: method
-        });
-        if (response.status === 200) {
-            const response_json = await response.json(); 
-            return response_json as T;
-        }
-        else {
-            const response_json = await response.json(); 
-            throw new Error(JSON.stringify(response_json,null,'\t'));
-        }
+  try {
+    const {
+      app_config,
+      data,
+      livemode,
+      thread_id
+    } = params;
+    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/threads/:threadId';
+    const method: Appdrop.APIRequestMethod = 'PATCH';
+    const request_body: Appdrop.APIRequestBody = {
+      app_config: app_config,
+      livemode: livemode,
+      data: data
+    };
+    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/threads/${thread_id}`, {
+      headers: {
+        "Authorization": `Basic ${btoa(app_config.api_key)}`,
+        "Content-Type": 'text/plain'
+      },
+      body: JSON.stringify(request_body),
+      method: method
+    });
+    if (response.status === 200) {
+      const response_json = await response.json();
+      return response_json as T;
     }
-    catch (error) {
-        console.error('updateThread error', error);
-        return null;
+    else {
+      const response_json = await response.json();
+      throw new Error(JSON.stringify(response_json, null, '\t'));
     }
+  }
+  catch (error) {
+    console.error('updateThread error', error);
+    return null;
+  }
 }
