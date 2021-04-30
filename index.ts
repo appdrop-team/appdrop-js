@@ -1509,3 +1509,219 @@ export async function updateThread<T>(params: UpdateThreadFunctionParams) {
     return null;
   }
 }
+
+/**
+ * Params for the `latLongToAddress` function
+ */
+interface LatLongToAddressParams {
+  lat: number;
+  long: number;
+  google_geocoding_api_key: string;
+}
+
+/**
+ * Geocode response
+ */
+interface LatLongToAddressResponse {
+  results: {
+    address_components: {
+      long_name : string;
+      short_name : string;
+      types : ('postal_code'|'locality'|'administrative_area_level_1'|'country')[];
+    }[];
+    /**
+     * Example: Memphis, TN 38128, USA
+     */
+    formatted_address: string;
+    types: ('postal_code')[];
+  }[];
+}
+/**
+ * Exchanges a latitude and longitude for an Address (excludes line1 and line2)
+ */
+export async function latLongToAddress(params: LatLongToAddressParams) {
+  try {
+    const {
+      lat,
+      long,
+      google_geocoding_api_key
+    } = params;
+    const method: Appdrop.APIRequestMethod = 'GET';
+    const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=${google_geocoding_api_key}`, {
+      method: method
+    });
+    if (response.status === 200) {
+      const response_json = await response.json() as LatLongToAddressResponse;
+      const { results } = response_json;
+      const postal_code_result = results.find(result => result.types.length === 1 && result.types[0] === 'postal_code');
+      if (postal_code_result === undefined) {
+        throw new Error(
+          JSON.stringify({
+            error: 'invalid lat long',
+            params
+          })
+        );
+      }
+      const { address_components } = postal_code_result;
+      const city_component = address_components
+        .find((address_component: any) =>
+          address_component.types.includes('locality')
+        );
+      let city = '';
+      if (city_component !== undefined) {
+        city = city_component.long_name;
+      }
+      const country_component = address_components
+        .find((address_component: any) =>
+          address_component.types.includes('country')
+        );
+      let country_code = 'US';
+      if (country_component !== undefined) {
+        country_code = country_component.short_name;
+      }
+      const state_code_component = address_components
+        .find((address_component: any) =>
+          address_component.types.includes('administrative_area_level_1')
+        );
+      let state_code = '';
+      if (state_code_component !== undefined) {
+        state_code = state_code_component.short_name;
+      }
+      const zip_component = address_components
+        .find((address_component: any) =>
+          address_component.types.includes('postal_code')
+        );
+      let zip = '';
+      if (zip_component !== undefined) {
+        zip = zip_component.short_name;
+      }
+      const address: Appdrop.Address = {
+        address1: '',
+        address2: '',
+        city,
+        country_code: country_code as Appdrop.CountryCode,
+        state_code,
+        zip,
+      };
+      return address;
+    }
+    else {
+      const response_json = await response.json();
+      throw new Error(JSON.stringify(response_json, null, '\t'));
+    }
+  }
+  catch (error) {
+    console.error('latLongToAddress error', error);
+    return null;
+  }
+}
+
+/**
+ * Params for the `addressToLatLong` function
+ */
+interface AddressToLatLongParams {
+  google_geocoding_api_key: string;
+  address: Appdrop.Address;
+}
+
+/**
+ * Geocode response
+ */
+interface AddressToLatLongResponse {
+  results : {
+    address_components : {
+      long_name : string;
+      short_name : string;
+      types : ('street_number'|'route'|'subpremise'|'postal_code'|'locality'|'administrative_area_level_1'|'country')[];
+    }[];
+    /**
+     * Example: 505 Church St #1, Nashville, TN 37219, USA
+     */
+    formatted_address : string;
+    geometry : {
+       location : {
+          lat: number;
+          lng: number;
+       };
+    };
+ }[];
+}
+
+/**
+ * Exchanges an address for a latitude, longitude, and formatted address string
+ */
+export async function addressToLatLong(params: AddressToLatLongParams) {
+  try {
+    const {
+      address: {
+        address1,
+        address2,
+        city,
+        country_code,
+        state_code,
+        zip,
+      },
+      google_geocoding_api_key
+    } = params;
+    let address_str = '';
+    if (Appdrop.validString(address1, true)) {
+      address_str += (address1 + ', ');
+    }
+    if (Appdrop.validString(address2, true)) {
+      address_str += (address2 + ', ');
+    }
+    if (Appdrop.validString(city, true)) {
+      address_str += (city + ', ');
+    }
+    if (Appdrop.validString(state_code, true)) {
+      address_str += (state_code + ', ');
+    }
+    if (Appdrop.validString(zip, true)) {
+      address_str += (zip + ', ');
+    }
+    if (Appdrop.validString(country_code, true)) {
+      address_str += country_code;
+    }
+    const address_uri = encodeURI(address_str);
+    const method: Appdrop.APIRequestMethod = 'GET';
+    const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${address_uri}&key=${google_geocoding_api_key}`, {
+      method: method
+    });
+    if (response.status === 200) {
+      const response_json = await response.json() as AddressToLatLongResponse;
+      const { results } = response_json;
+      if (!results || results.length === 0) {
+        throw new Error(
+          JSON.stringify({
+            error: 'invalid lat long',
+            params
+          })
+        );
+      }
+      const {
+        formatted_address,
+        geometry: {
+          location: {
+            lat,
+            lng
+          }
+        }
+      } = results[0];
+      return {
+        address: formatted_address,
+        lat,
+        long: lng
+      };
+    }
+    else {
+      const response_json = await response.json();
+      throw new Error(JSON.stringify(response_json, null, '\t'));
+    }
+  }
+  catch (error) {
+    console.error('addressToLatLong error', error);
+    return null;
+  }
+}
+
+
