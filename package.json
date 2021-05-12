@@ -1,6 +1,6 @@
 {
   "name": "appdrop-js",
-  "version": "2.1.144",
+  "version": "2.1.145",
   "description": "Asynchronous Functions for JS apps built on Appdrop.",
   "devDependencies": {
     "typescript": "^3.8.0"
