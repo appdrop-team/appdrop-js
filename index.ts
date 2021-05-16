@@ -55,68 +55,15 @@ export async function authenticateUser<T>(params: AuthenticateUserFunctionParams
   }
 }
 
-export interface RetrieveUserSecurityQuestionFunctionParams extends Appdrop.APIRequestBody {
-  data: Appdrop.RetrieveUserSecurityQuestionParams;
-}
-
-/**
- * Exchanges an email address for an `User` object which includes 
- * the `security_question` and `security_answer_hash` property to display 
- * to the resetting user. 
- * 
- * If either property is an empty string, then 
- * the user failed to complete the security section step and must contact support
- * who can set a temporary answer to the security question for the user.
- */
-export async function retrieveUserSecurityQuestion<T>(params: RetrieveUserSecurityQuestionFunctionParams) {
-  try {
-    const {
-      app_config,
-      data,
-      livemode,
-    } = params;
-    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/retrieveUserSecurityQuestion';
-    const method: Appdrop.APIRequestMethod = 'POST';
-    const request_body: Appdrop.APIRequestBody = {
-      app_config: app_config,
-      livemode: livemode,
-      data: data
-    };
-    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/retrieveUserSecurityQuestion`, {
-      headers: {
-        "Authorization": `Basic ${btoa(app_config.api_key)}`,
-        "Content-Type": 'text/plain'
-      },
-      body: JSON.stringify(request_body),
-      method: method
-    });
-    if (response.status === 200) {
-      const response_json = await response.json();
-      return response_json as T;
-    }
-    else {
-      const response_json = await response.json();
-      throw new Error(JSON.stringify(response_json, null, '\t'));
-    }
-  }
-  catch (error) {
-    console.error('retrieveUserSecurityQuestion error', error);
-    return null;
-  }
-}
-
-export interface RequestUserPasswordResetFunctionParams extends Appdrop.APIRequestBody {
-  data: Appdrop.RequestUserPasswordResetParams;
+export interface SendPasswordResetEmailFunctionParams extends Appdrop.APIRequestBody {
+  data: Appdrop.SendPasswordResetEmailParams;
   user_id: string;
 }
 
 /**
- * Params to exchange a security answer for authentication.
- * 
- * On success, the returning `User` object has a valid string at
- * `password_hash` which is how we know the user previously signed up successfully.
+ * Params to exchange a send a password reset email
  */
-export async function requestUserPasswordReset<T>(params: RequestUserPasswordResetFunctionParams) {
+export async function sendPasswordResetEmail(params: SendPasswordResetEmailFunctionParams) {
   try {
     const {
       app_config,
@@ -124,14 +71,14 @@ export async function requestUserPasswordReset<T>(params: RequestUserPasswordRes
       livemode,
       user_id
     } = params;
-    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/users/:userId/requestUserPasswordReset';
+    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/users/:userId/sendPasswordResetEmail';
     const method: Appdrop.APIRequestMethod = 'POST';
     const request_body: Appdrop.APIRequestBody = {
-      app_config: app_config,
-      livemode: livemode,
-      data: data
+      app_config,
+      livemode,
+      data
     };
-    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/users/${user_id}/requestUserPasswordReset`, {
+    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/users/${user_id}/sendPasswordResetEmail`, {
       headers: {
         "Authorization": `Basic ${btoa(app_config.api_key)}`,
         "Content-Type": 'text/plain'
@@ -141,7 +88,7 @@ export async function requestUserPasswordReset<T>(params: RequestUserPasswordRes
     });
     if (response.status === 200) {
       const response_json = await response.json();
-      return response_json as T;
+      return response_json as Appdrop.PasswordReset;
     }
     else {
       const response_json = await response.json();
@@ -149,7 +96,7 @@ export async function requestUserPasswordReset<T>(params: RequestUserPasswordRes
     }
   }
   catch (error) {
-    console.error('requestUserPasswordReset error', error);
+    console.error('sendPasswordResetEmail error', error);
     return null;
   }
 }
