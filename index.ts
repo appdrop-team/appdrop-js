@@ -61,7 +61,7 @@ export interface SendPasswordResetEmailFunctionParams extends Appdrop.APIRequest
 }
 
 /**
- * Params to exchange a send a password reset email
+ * Params to send a password reset email
  */
 export async function sendPasswordResetEmail(params: SendPasswordResetEmailFunctionParams) {
   try {
@@ -89,6 +89,52 @@ export async function sendPasswordResetEmail(params: SendPasswordResetEmailFunct
     if (response.status === 200) {
       const response_json = await response.json();
       return response_json as Appdrop.PasswordReset;
+    }
+    else {
+      const response_json = await response.json();
+      throw new Error(JSON.stringify(response_json, null, '\t'));
+    }
+  }
+  catch (error) {
+    console.error('sendPasswordResetEmail error', error);
+    return null;
+  }
+}
+
+export interface SendPasswordResetVerificationCodeFunctionParams extends Appdrop.APIRequestBody {
+  data: Appdrop.SendPasswordResetVerificationCodeParams;
+  user_id: string;
+}
+
+/**
+ * Params to exchange a verification code for a user
+ */
+export async function sendPasswordResetVerificationCode<T>(params: SendPasswordResetVerificationCodeFunctionParams) {
+  try {
+    const {
+      app_config,
+      data,
+      livemode,
+      user_id
+    } = params;
+    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/users/:userId/sendPasswordResetVerificationCode';
+    const method: Appdrop.APIRequestMethod = 'POST';
+    const request_body: Appdrop.APIRequestBody = {
+      app_config,
+      livemode,
+      data
+    };
+    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/users/${user_id}/sendPasswordResetVerificationCode`, {
+      headers: {
+        "Authorization": `Basic ${btoa(app_config.api_key)}`,
+        "Content-Type": 'text/plain'
+      },
+      body: JSON.stringify(request_body),
+      method: method
+    });
+    if (response.status === 200) {
+      const response_json = await response.json();
+      return response_json as T;
     }
     else {
       const response_json = await response.json();
