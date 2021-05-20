@@ -116,7 +116,7 @@ export async function sendPasswordResetVerificationCode<T>(params: SendPasswordR
       data,
       livemode,
       user_id
-    } = params;
+  } = params;
     const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/users/:userId/sendPasswordResetVerificationCode';
     const method: Appdrop.APIRequestMethod = 'POST';
     const request_body: Appdrop.APIRequestBody = {
@@ -142,7 +142,7 @@ export async function sendPasswordResetVerificationCode<T>(params: SendPasswordR
     }
   }
   catch (error) {
-    console.error('sendPasswordResetEmail error', error);
+    console.error('sendPasswordResetVerificationCode error', error);
     return null;
   }
 }
