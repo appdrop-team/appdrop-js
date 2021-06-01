@@ -25,14 +25,14 @@ export async function authenticateUser<T>(params: AuthenticateUserFunctionParams
       livemode,
       user_id,
     } = params;
-    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/users/:userId/authenticateUser';
+    const _: Appdrop.APIRequestEndpoint = 'v2/projects/:projectId/users/:userId/authenticateUser';
     const method: Appdrop.APIRequestMethod = 'POST';
     const request_body: Appdrop.APIRequestBody = {
       app_config: app_config,
       livemode: livemode,
       data: data
     };
-    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/users/${user_id}/authenticateUser`, {
+    const response = await fetch(`${Appdrop.getAPIRequestBase(app_config.data_center)}/v2/projects/${app_config.project_id}/users/${user_id}/authenticateUser`, {
       headers: {
         "Authorization": `Basic ${btoa(app_config.api_key)}`,
         "Content-Type": 'text/plain'
@@ -71,14 +71,14 @@ export async function sendPasswordResetEmail(params: SendPasswordResetEmailFunct
       livemode,
       user_id
     } = params;
-    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/users/:userId/sendPasswordResetEmail';
+    const _: Appdrop.APIRequestEndpoint = 'v2/projects/:projectId/users/:userId/sendPasswordResetEmail';
     const method: Appdrop.APIRequestMethod = 'POST';
     const request_body: Appdrop.APIRequestBody = {
       app_config,
       livemode,
       data
     };
-    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/users/${user_id}/sendPasswordResetEmail`, {
+    const response = await fetch(`${Appdrop.getAPIRequestBase(app_config.data_center)}/v2/projects/${app_config.project_id}/users/${user_id}/sendPasswordResetEmail`, {
       headers: {
         "Authorization": `Basic ${btoa(app_config.api_key)}`,
         "Content-Type": 'text/plain'
@@ -117,14 +117,14 @@ export async function sendPasswordResetVerificationCode<T>(params: SendPasswordR
       livemode,
       user_id
   } = params;
-    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/users/:userId/sendPasswordResetVerificationCode';
+    const _: Appdrop.APIRequestEndpoint = 'v2/projects/:projectId/users/:userId/sendPasswordResetVerificationCode';
     const method: Appdrop.APIRequestMethod = 'POST';
     const request_body: Appdrop.APIRequestBody = {
       app_config,
       livemode,
       data
     };
-    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/users/${user_id}/sendPasswordResetVerificationCode`, {
+    const response = await fetch(`${Appdrop.getAPIRequestBase(app_config.data_center)}/v2/projects/${app_config.project_id}/users/${user_id}/sendPasswordResetVerificationCode`, {
       headers: {
         "Authorization": `Basic ${btoa(app_config.api_key)}`,
         "Content-Type": 'text/plain'
@@ -174,14 +174,14 @@ export async function attachCardToCustomer<T>(params: AttachCardToCustomerFuncti
       stripe_customer_id,
       stripe_customer_type
     } = params;
-    const _: Appdrop.APIRequestEndpoint = 'v1/customers/:stripeCustomerId/cards/:stripeCustomerType';
+    const _: Appdrop.APIRequestEndpoint = 'v2/customers/:stripeCustomerId/cards/:stripeCustomerType';
     const method: Appdrop.APIRequestMethod = 'POST';
     const request_body: Appdrop.APIRequestBody = {
       app_config: app_config,
       livemode: livemode,
       data: data
     };
-    const response = await fetch(`${Appdrop.APIRequestBase}/v1/customers/${stripe_customer_id}/cards/${stripe_customer_type}`, {
+    const response = await fetch(`${Appdrop.getAPIRequestBase(app_config.data_center)}/v2/customers/${stripe_customer_id}/cards/${stripe_customer_type}`, {
       headers: {
         "Authorization": `Basic ${btoa(app_config.api_key)}`,
         "Content-Type": 'text/plain'
@@ -223,14 +223,14 @@ export async function createCustomerSubscription<T>(params: CreateCustomerSubscr
       stripe_customer_id,
       stripe_customer_type
     } = params;
-    const _: Appdrop.APIRequestEndpoint = 'v1/customers/:stripeCustomerId/subscriptions/:stripeCustomerType';
+    const _: Appdrop.APIRequestEndpoint = 'v2/customers/:stripeCustomerId/subscriptions/:stripeCustomerType';
     const method: Appdrop.APIRequestMethod = 'PUT';
     const request_body: Appdrop.APIRequestBody = {
       app_config: app_config,
       livemode: livemode,
       data: data
     };
-    const response = await fetch(`${Appdrop.APIRequestBase}/v1/customers/${stripe_customer_id}/subscriptions/${stripe_customer_type}`, {
+    const response = await fetch(`${Appdrop.getAPIRequestBase(app_config.data_center)}/v2/customers/${stripe_customer_id}/subscriptions/${stripe_customer_type}`, {
       headers: {
         "Authorization": `Basic ${btoa(app_config.api_key)}`,
         "Content-Type": 'text/plain'
@@ -274,14 +274,14 @@ export async function updateCustomerSubscription<T>(params: UpdateCustomerSubscr
       stripe_customer_type,
       stripe_subscription_id
     } = params;
-    const _: Appdrop.APIRequestEndpoint = 'v1/customers/:stripeCustomerId/subscriptions/:subscriptionId/:stripeCustomerType';
+    const _: Appdrop.APIRequestEndpoint = 'v2/customers/:stripeCustomerId/subscriptions/:subscriptionId/:stripeCustomerType';
     const method: Appdrop.APIRequestMethod = 'PATCH';
     const request_body: Appdrop.APIRequestBody = {
       app_config: app_config,
       livemode: livemode,
       data: data
     };
-    const response = await fetch(`${Appdrop.APIRequestBase}/v1/customers/${stripe_customer_id}/subscriptions/${stripe_subscription_id}/${stripe_customer_type}`, {
+    const response = await fetch(`${Appdrop.getAPIRequestBase(app_config.data_center)}/v2/customers/${stripe_customer_id}/subscriptions/${stripe_subscription_id}/${stripe_customer_type}`, {
       headers: {
         "Authorization": `Basic ${btoa(app_config.api_key)}`,
         "Content-Type": 'text/plain'
@@ -324,14 +324,14 @@ export async function createCustomerCharge(params: CreateCustomerChargeFunctionP
       stripe_customer_id,
       stripe_customer_type
     } = params;
-    const _: Appdrop.APIRequestEndpoint = 'v1/customers/:stripeCustomerId/orders/:orderId/charges/:stripeCustomerType';
+    const _: Appdrop.APIRequestEndpoint = 'v2/customers/:stripeCustomerId/orders/:orderId/charges/:stripeCustomerType';
     const method: Appdrop.APIRequestMethod = 'PUT';
     const request_body: Appdrop.APIRequestBody = {
       app_config: app_config,
       livemode: livemode,
       data: data
     };
-    const response = await fetch(`${Appdrop.APIRequestBase}/v1/customers/${stripe_customer_id}/orders/${order_id}/charges/${stripe_customer_type}`, {
+    const response = await fetch(`${Appdrop.getAPIRequestBase(app_config.data_center)}/v2/customers/${stripe_customer_id}/orders/${order_id}/charges/${stripe_customer_type}`, {
       headers: {
         "Authorization": `Basic ${btoa(app_config.api_key)}`,
         "Content-Type": 'text/plain'
@@ -375,14 +375,14 @@ export async function createCustomerChargeRefund(params: CreateCustomerChargeRef
       order_id,
       stripe_customer_id
     } = params;
-    const _: Appdrop.APIRequestEndpoint = 'v1/customers/:stripeCustomerId/orders/:orderId/refunds';
+    const _: Appdrop.APIRequestEndpoint = 'v2/customers/:stripeCustomerId/orders/:orderId/refunds';
     const method: Appdrop.APIRequestMethod = 'PUT';
     const request_body: Appdrop.APIRequestBody = {
       app_config: app_config,
       livemode: livemode,
       data: data
     };
-    const response = await fetch(`${Appdrop.APIRequestBase}/v1/customers/${stripe_customer_id}/orders/${order_id}/refunds`, {
+    const response = await fetch(`${Appdrop.getAPIRequestBase(app_config.data_center)}/v2/customers/${stripe_customer_id}/orders/${order_id}/refunds`, {
       headers: {
         "Authorization": `Basic ${btoa(app_config.api_key)}`,
         "Content-Type": 'text/plain'
@@ -429,14 +429,14 @@ export async function updateEntity<T>(params: UpdateEntityFunctionParams) {
       entity_id,
       livemode
     } = params;
-    const _: Appdrop.APIRequestEndpoint = 'v1/entities/:entityId';
+    const _: Appdrop.APIRequestEndpoint = 'v2/entities/:entityId';
     const method: Appdrop.APIRequestMethod = 'PATCH';
     const request_body: Appdrop.APIRequestBody = {
       app_config: app_config,
       livemode: livemode,
       data: data
     };
-    const response = await fetch(`${Appdrop.APIRequestBase}/v1/entities/${entity_id}`, {
+    const response = await fetch(`${Appdrop.getAPIRequestBase(app_config.data_center)}/v2/entities/${entity_id}`, {
       headers: {
         "Authorization": `Basic ${btoa(app_config.api_key)}`,
         "Content-Type": 'text/plain'
@@ -483,14 +483,14 @@ export async function createOrder(params: CreateOrderFunctionParams) {
       livemode,
       user_id
     } = params;
-    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/users/:userId/orders';
+    const _: Appdrop.APIRequestEndpoint = 'v2/projects/:projectId/users/:userId/orders';
     const method: Appdrop.APIRequestMethod = 'PUT';
     const request_body: Appdrop.APIRequestBody = {
       app_config: app_config,
       livemode: livemode,
       data: data
     };
-    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/users/${user_id}/orders`, {
+    const response = await fetch(`${Appdrop.getAPIRequestBase(app_config.data_center)}/v2/projects/${app_config.project_id}/users/${user_id}/orders`, {
       headers: {
         "Authorization": `Basic ${btoa(app_config.api_key)}`,
         "Content-Type": 'text/plain'
@@ -534,14 +534,14 @@ export async function updateOrder(params: UpdateOrderFunctionParams) {
       order_id,
       user_id
     } = params;
-    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/users/:userId/orders/:orderId';
+    const _: Appdrop.APIRequestEndpoint = 'v2/projects/:projectId/users/:userId/orders/:orderId';
     const method: Appdrop.APIRequestMethod = 'PATCH';
     const request_body: Appdrop.APIRequestBody = {
       app_config: app_config,
       livemode: livemode,
       data: data
     };
-    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/users/${user_id}/orders/${order_id}`, {
+    const response = await fetch(`${Appdrop.getAPIRequestBase(app_config.data_center)}/v2/projects/${app_config.project_id}/users/${user_id}/orders/${order_id}`, {
       headers: {
         "Authorization": `Basic ${btoa(app_config.api_key)}`,
         "Content-Type": 'text/plain'
@@ -582,14 +582,14 @@ export async function confirmOrder(params: ConfirmOrderFunctionParams) {
       order_id,
       user_id
     } = params;
-    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/users/:userId/orders/:orderId/confirm';
+    const _: Appdrop.APIRequestEndpoint = 'v2/projects/:projectId/users/:userId/orders/:orderId/confirm';
     const method: Appdrop.APIRequestMethod = 'POST';
     const request_body: Appdrop.APIRequestBody = {
       app_config: app_config,
       livemode: livemode,
       data: data
     };
-    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/users/${user_id}/orders/${order_id}/confirm`, {
+    const response = await fetch(`${Appdrop.getAPIRequestBase(app_config.data_center)}/v2/projects/${app_config.project_id}/users/${user_id}/orders/${order_id}/confirm`, {
       headers: {
         "Authorization": `Basic ${btoa(app_config.api_key)}`,
         "Content-Type": 'text/plain'
@@ -630,14 +630,14 @@ export async function cancelOrder(params: CancelOrderFunctionParams) {
       livemode,
       user_id
     } = params;
-    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/users/:userId/orders/:orderId/cancel';
+    const _: Appdrop.APIRequestEndpoint = 'v2/projects/:projectId/users/:userId/orders/:orderId/cancel';
     const method: Appdrop.APIRequestMethod = 'POST';
     const request_body: Appdrop.APIRequestBody = {
       app_config: app_config,
       livemode: livemode,
       data: data
     };
-    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/users/${user_id}/orders/${order_id}/cancel`, {
+    const response = await fetch(`${Appdrop.getAPIRequestBase(app_config.data_center)}/v2/projects/${app_config.project_id}/users/${user_id}/orders/${order_id}/cancel`, {
       headers: {
         "Authorization": `Basic ${btoa(app_config.api_key)}`,
         "Content-Type": 'text/plain'
@@ -684,14 +684,14 @@ export async function syncPrintfulProducts(params: SyncPrintfulProductsFunctionP
       livemode,
       project_id
     } = params;
-    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/syncPrintfulProducts';
+    const _: Appdrop.APIRequestEndpoint = 'v2/projects/:projectId/syncPrintfulProducts';
     const method: Appdrop.APIRequestMethod = 'POST';
     const request_body: Appdrop.APIRequestBody = {
       app_config: app_config,
       livemode: livemode,
       data: data
     };
-    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${project_id}/syncPrintfulProducts`, {
+    const response = await fetch(`${Appdrop.getAPIRequestBase(app_config.data_center)}/v2/projects/${project_id}/syncPrintfulProducts`, {
       headers: {
         "Authorization": `Basic ${btoa(app_config.api_key)}`,
         "Content-Type": 'text/plain'
@@ -736,14 +736,14 @@ export async function createProjectTemplate(params: CreateProjectTemplateFunctio
       data,
       livemode
     } = params;
-    const _: Appdrop.APIRequestEndpoint = 'v1/projectTemplates';
+    const _: Appdrop.APIRequestEndpoint = 'v2/projectTemplates';
     const method: Appdrop.APIRequestMethod = 'PUT';
     const request_body: Appdrop.APIRequestBody = {
       app_config: app_config,
       livemode: livemode,
       data: data
     };
-    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projectTemplates`, {
+    const response = await fetch(`${Appdrop.getAPIRequestBase(app_config.data_center)}/v2/projectTemplates`, {
       headers: {
         "Authorization": `Basic ${btoa(app_config.api_key)}`,
         "Content-Type": 'text/plain'
@@ -782,14 +782,14 @@ export async function updateProjectTemplate(params: UpdateProjectTemplateFunctio
       livemode,
       project_template_id
     } = params;
-    const _: Appdrop.APIRequestEndpoint = 'v1/projectTemplates/:projectTemplateId';
+    const _: Appdrop.APIRequestEndpoint = 'v2/projectTemplates/:projectTemplateId';
     const method: Appdrop.APIRequestMethod = 'PATCH';
     const request_body: Appdrop.APIRequestBody = {
       app_config: app_config,
       livemode: livemode,
       data: data
     };
-    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projectTemplates/${project_template_id}`, {
+    const response = await fetch(`${Appdrop.getAPIRequestBase(app_config.data_center)}/v2/projectTemplates/${project_template_id}`, {
       headers: {
         "Authorization": `Basic ${btoa(app_config.api_key)}`,
         "Content-Type": 'text/plain'
@@ -830,14 +830,14 @@ export async function createProject<T>(params: CreateProjectFunctionParams) {
       data,
       livemode
     } = params;
-    const _: Appdrop.APIRequestEndpoint = 'v1/projects';
+    const _: Appdrop.APIRequestEndpoint = 'v2/projects';
     const method: Appdrop.APIRequestMethod = 'PUT';
     const request_body: Appdrop.APIRequestBody = {
       app_config: app_config,
       livemode: livemode,
       data: data
     };
-    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects`, {
+    const response = await fetch(`${Appdrop.getAPIRequestBase(app_config.data_center)}/v2/projects`, {
       headers: {
         "Authorization": `Basic ${btoa(app_config.api_key)}`,
         "Content-Type": 'text/plain'
@@ -881,14 +881,14 @@ export async function updateProject<T>(params: UpdateProjectFunctionParams) {
       livemode,
       project_id
     } = params;
-    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId';
+    const _: Appdrop.APIRequestEndpoint = 'v2/projects/:projectId';
     const method: Appdrop.APIRequestMethod = 'PATCH';
     const request_body: Appdrop.APIRequestBody = {
       app_config: app_config,
       livemode: livemode,
       data: data
     };
-    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${project_id}`, {
+    const response = await fetch(`${Appdrop.getAPIRequestBase(app_config.data_center)}/v2/projects/${project_id}`, {
       headers: {
         "Authorization": `Basic ${btoa(app_config.api_key)}`,
         "Content-Type": 'text/plain'
@@ -932,14 +932,14 @@ export async function createApp<T>(params: CreateAppFunctionParams) {
       livemode,
       project_id
     } = params;
-    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/apps';
+    const _: Appdrop.APIRequestEndpoint = 'v2/projects/:projectId/apps';
     const method: Appdrop.APIRequestMethod = 'PUT';
     const request_body: Appdrop.APIRequestBody = {
       app_config: app_config,
       livemode: livemode,
       data: data
     };
-    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${project_id}/apps`, {
+    const response = await fetch(`${Appdrop.getAPIRequestBase(app_config.data_center)}/v2/projects/${project_id}/apps`, {
       headers: {
         "Authorization": `Basic ${btoa(app_config.api_key)}`,
         "Content-Type": 'text/plain'
@@ -985,14 +985,14 @@ export async function updateApp<T>(params: UpdateAppFunctionParams) {
       project_id,
       livemode
     } = params;
-    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/apps/:appId';
+    const _: Appdrop.APIRequestEndpoint = 'v2/projects/:projectId/apps/:appId';
     const method: Appdrop.APIRequestMethod = 'PATCH';
     const request_body: Appdrop.APIRequestBody = {
       app_config: app_config,
       livemode: livemode,
       data: data
     };
-    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${project_id}/apps/${app_id}`, {
+    const response = await fetch(`${Appdrop.getAPIRequestBase(app_config.data_center)}/v2/projects/${project_id}/apps/${app_id}`, {
       headers: {
         "Authorization": `Basic ${btoa(app_config.api_key)}`,
         "Content-Type": 'text/plain'
@@ -1040,17 +1040,17 @@ export async function initAppState<T>(params: InitAppStateFunctionParams) {
       livemode,
       project_type
     } = params;
-    const _: Appdrop.APIRequestEndpoint = 'v1/initAppState/' + project_type as
-      'v1/initAppState/cloud' |
-      'v1/initAppState/ecommerce' |
-      'v1/initAppState/marketplace';
+    const _: Appdrop.APIRequestEndpoint = 'v2/initAppState/' + project_type as
+      'v2/initAppState/cloud' |
+      'v2/initAppState/ecommerce' |
+      'v2/initAppState/marketplace';
     const method: Appdrop.APIRequestMethod = 'POST';
     const request_body: Appdrop.APIRequestBody = {
       app_config: app_config,
       livemode: livemode,
       data: data
     };
-    const response = await fetch(`${Appdrop.APIRequestBase}/v1/initAppState/${project_type}`, {
+    const response = await fetch(`${Appdrop.getAPIRequestBase(app_config.data_center)}/v2/initAppState/${project_type}`, {
       headers: {
         "Authorization": `Basic ${btoa(app_config.api_key)}`,
         "Content-Type": 'text/plain'
@@ -1099,14 +1099,14 @@ export async function updateUser<T>(params: UpdateUserFunctionParams) {
       livemode,
       user_id
     } = params;
-    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/users/:userId';
+    const _: Appdrop.APIRequestEndpoint = 'v2/projects/:projectId/users/:userId';
     const method: Appdrop.APIRequestMethod = 'PATCH';
     const request_body: Appdrop.APIRequestBody = {
       app_config: app_config,
       livemode: livemode,
       data: data
     };
-    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/users/${user_id}`, {
+    const response = await fetch(`${Appdrop.getAPIRequestBase(app_config.data_center)}/v2/projects/${app_config.project_id}/users/${user_id}`, {
       headers: {
         "Authorization": `Basic ${btoa(app_config.api_key)}`,
         "Content-Type": 'text/plain'
@@ -1150,14 +1150,14 @@ export async function createPost<T>(params: CreatePostFunctionParams) {
       data,
       livemode
     } = params;
-    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/posts';
+    const _: Appdrop.APIRequestEndpoint = 'v2/projects/:projectId/posts';
     const method: Appdrop.APIRequestMethod = 'PUT';
     const request_body: Appdrop.APIRequestBody = {
       app_config: app_config,
       livemode: livemode,
       data: data
     };
-    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/posts`, {
+    const response = await fetch(`${Appdrop.getAPIRequestBase(app_config.data_center)}/v2/projects/${app_config.project_id}/posts`, {
       headers: {
         "Authorization": `Basic ${btoa(app_config.api_key)}`,
         "Content-Type": 'text/plain'
@@ -1198,14 +1198,14 @@ export async function updatePost<T>(params: UpdatePostFunctionParams) {
       livemode,
       post_id
     } = params;
-    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/posts/:postId';
+    const _: Appdrop.APIRequestEndpoint = 'v2/projects/:projectId/posts/:postId';
     const method: Appdrop.APIRequestMethod = 'PATCH';
     const request_body: Appdrop.APIRequestBody = {
       app_config: app_config,
       livemode: livemode,
       data: data
     };
-    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/posts/${post_id}`, {
+    const response = await fetch(`${Appdrop.getAPIRequestBase(app_config.data_center)}/v2/projects/${app_config.project_id}/posts/${post_id}`, {
       headers: {
         "Authorization": `Basic ${btoa(app_config.api_key)}`,
         "Content-Type": 'text/plain'
@@ -1239,14 +1239,14 @@ export async function createPromo(params: CreatePromoFunctionParams) {
       livemode,
       project_id,
     } = params;
-    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/promos';
+    const _: Appdrop.APIRequestEndpoint = 'v2/projects/:projectId/promos';
     const method: Appdrop.APIRequestMethod = 'PUT';
     const request_body: Appdrop.APIRequestBody = {
       app_config: app_config,
       livemode: livemode,
       data: data
     };
-    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${project_id}/promos`, {
+    const response = await fetch(`${Appdrop.getAPIRequestBase(app_config.data_center)}/v2/projects/${project_id}/promos`, {
       headers: {
         "Authorization": `Basic ${btoa(app_config.api_key)}`,
         "Content-Type": 'text/plain'
@@ -1287,14 +1287,14 @@ export async function updatePromo(params: UpdatePromoFunctionParams) {
       project_id,
       promo_id
     } = params;
-    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/promos/:promoId';
+    const _: Appdrop.APIRequestEndpoint = 'v2/projects/:projectId/promos/:promoId';
     const method: Appdrop.APIRequestMethod = 'PATCH';
     const request_body: Appdrop.APIRequestBody = {
       app_config: app_config,
       livemode: livemode,
       data: data
     };
-    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${project_id}/promos/${promo_id}`, {
+    const response = await fetch(`${Appdrop.getAPIRequestBase(app_config.data_center)}/v2/projects/${project_id}/promos/${promo_id}`, {
       headers: {
         "Authorization": `Basic ${btoa(app_config.api_key)}`,
         "Content-Type": 'text/plain'
@@ -1331,14 +1331,14 @@ export async function createRemoteAsset(params: CreateRemoteAssetFunctionParams)
       data,
       livemode
     } = params;
-    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/remoteAssets';
+    const _: Appdrop.APIRequestEndpoint = 'v2/projects/:projectId/remoteAssets';
     const method: Appdrop.APIRequestMethod = 'PUT';
     const request_body: Appdrop.APIRequestBody = {
       app_config: app_config,
       livemode: livemode,
       data: data
     };
-    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/remoteAssets`, {
+    const response = await fetch(`${Appdrop.getAPIRequestBase(app_config.data_center)}/v2/projects/${app_config.project_id}/remoteAssets`, {
       headers: {
         "Authorization": `Basic ${btoa(app_config.api_key)}`,
         "Content-Type": 'text/plain'
@@ -1379,14 +1379,14 @@ export async function updateRemoteAsset(params: UpdateRemoteAssetFunctionParams)
       livemode,
       remote_asset_id
     } = params;
-    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/remoteAssets/:remoteAssetId';
+    const _: Appdrop.APIRequestEndpoint = 'v2/projects/:projectId/remoteAssets/:remoteAssetId';
     const method: Appdrop.APIRequestMethod = 'PATCH';
     const request_body: Appdrop.APIRequestBody = {
       app_config: app_config,
       livemode: livemode,
       data: data
     };
-    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/remoteAssets/${remote_asset_id}`, {
+    const response = await fetch(`${Appdrop.getAPIRequestBase(app_config.data_center)}/v2/projects/${app_config.project_id}/remoteAssets/${remote_asset_id}`, {
       headers: {
         "Authorization": `Basic ${btoa(app_config.api_key)}`,
         "Content-Type": 'text/plain'
@@ -1425,14 +1425,14 @@ export async function createThread<T>(params: CreateThreadFunctionParams) {
       data,
       livemode
     } = params;
-    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/threads';
+    const _: Appdrop.APIRequestEndpoint = 'v2/projects/:projectId/threads';
     const method: Appdrop.APIRequestMethod = 'PUT';
     const request_body: Appdrop.APIRequestBody = {
       app_config: app_config,
       livemode: livemode,
       data: data
     };
-    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/threads`, {
+    const response = await fetch(`${Appdrop.getAPIRequestBase(app_config.data_center)}/v2/projects/${app_config.project_id}/threads`, {
       headers: {
         "Authorization": `Basic ${btoa(app_config.api_key)}`,
         "Content-Type": 'text/plain'
@@ -1473,14 +1473,14 @@ export async function updateThread<T>(params: UpdateThreadFunctionParams) {
       livemode,
       thread_id
     } = params;
-    const _: Appdrop.APIRequestEndpoint = 'v1/projects/:projectId/threads/:threadId';
+    const _: Appdrop.APIRequestEndpoint = 'v2/projects/:projectId/threads/:threadId';
     const method: Appdrop.APIRequestMethod = 'PATCH';
     const request_body: Appdrop.APIRequestBody = {
       app_config: app_config,
       livemode: livemode,
       data: data
     };
-    const response = await fetch(`${Appdrop.APIRequestBase}/v1/projects/${app_config.project_id}/threads/${thread_id}`, {
+    const response = await fetch(`${Appdrop.getAPIRequestBase(app_config.data_center)}/v2/projects/${app_config.project_id}/threads/${thread_id}`, {
       headers: {
         "Authorization": `Basic ${btoa(app_config.api_key)}`,
         "Content-Type": 'text/plain'
