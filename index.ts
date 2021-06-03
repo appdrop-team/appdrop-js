@@ -46,12 +46,12 @@ export async function authenticateUser<T>(params: AuthenticateUserFunctionParams
     }
     else {
       const response_json = await response.json();
-      throw new Error(JSON.stringify(response_json, null, '\t'));
+      return response_json as { error: Appdrop.APIRequestError };
     }
   }
   catch (error) {
     console.error('authenticateUser error', error);
-    return null;
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] };
   }
 }
 
@@ -92,12 +92,12 @@ export async function sendPasswordResetEmail(params: SendPasswordResetEmailFunct
     }
     else {
       const response_json = await response.json();
-      throw new Error(JSON.stringify(response_json, null, '\t'));
+      return response_json as { error: Appdrop.APIRequestError };
     }
   }
   catch (error) {
     console.error('sendPasswordResetEmail error', error);
-    return null;
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] };
   }
 }
 
@@ -138,12 +138,12 @@ export async function sendPasswordResetVerificationCode<T>(params: SendPasswordR
     }
     else {
       const response_json = await response.json();
-      throw new Error(JSON.stringify(response_json, null, '\t'));
+      return response_json as { error: Appdrop.APIRequestError };
     }
   }
   catch (error) {
     console.error('sendPasswordResetVerificationCode error', error);
-    return null;
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] };
   }
 }
 
@@ -195,12 +195,12 @@ export async function attachCardToCustomer<T>(params: AttachCardToCustomerFuncti
     }
     else {
       const response_json = await response.json();
-      throw new Error(JSON.stringify(response_json, null, '\t'));
+      return response_json as { error: Appdrop.APIRequestError };
     }
   }
   catch (error) {
     console.error('attachCardToCustomer error', error);
-    return null;
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] };
   }
 }
 
@@ -244,12 +244,12 @@ export async function createCustomerSubscription<T>(params: CreateCustomerSubscr
     }
     else {
       const response_json = await response.json();
-      throw new Error(JSON.stringify(response_json, null, '\t'));
+      return response_json as { error: Appdrop.APIRequestError };
     }
   }
   catch (error) {
     console.error('createCustomerSubscription error', error);
-    return null;
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] };
   }
 }
 
@@ -295,12 +295,12 @@ export async function updateCustomerSubscription<T>(params: UpdateCustomerSubscr
     }
     else {
       const response_json = await response.json();
-      throw new Error(JSON.stringify(response_json, null, '\t'));
+      return response_json as { error: Appdrop.APIRequestError };
     }
   }
   catch (error) {
     console.error('updateCustomerSubscription error', error);
-    return null;
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] };
   }
 }
 
@@ -345,12 +345,12 @@ export async function createCustomerCharge(params: CreateCustomerChargeFunctionP
     }
     else {
       const response_json = await response.json();
-      throw new Error(JSON.stringify(response_json, null, '\t'));
+      return response_json as { error: Appdrop.APIRequestError };
     }
   }
   catch (error) {
     console.error('createCustomerCharge error', error);
-    return null;
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] };
   }
 }
 
@@ -396,12 +396,12 @@ export async function createCustomerChargeRefund(params: CreateCustomerChargeRef
     }
     else {
       const response_json = await response.json();
-      throw new Error(JSON.stringify(response_json, null, '\t'));
+      return response_json as { error: Appdrop.APIRequestError };
     }
   }
   catch (error) {
     console.error('createCustomerChargeRefund error', error);
-    return null;
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] };
   }
 }
 
@@ -450,12 +450,12 @@ export async function updateEntity<T>(params: UpdateEntityFunctionParams) {
     }
     else {
       const response_json = await response.json();
-      throw new Error(JSON.stringify(response_json, null, '\t'));
+      return response_json as { error: Appdrop.APIRequestError };
     }
   }
   catch (error) {
     console.error('updateEntity error', error);
-    return null;
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] };
   }
 }
 
@@ -504,12 +504,12 @@ export async function createOrder(params: CreateOrderFunctionParams) {
     }
     else {
       const response_json = await response.json();
-      throw new Error(JSON.stringify(response_json, null, '\t'));
+      return response_json as { error: Appdrop.APIRequestError };
     }
   }
   catch (error) {
     console.error('createOrder error', error);
-    return null;
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] };
   }
 }
 
@@ -555,12 +555,12 @@ export async function updateOrder(params: UpdateOrderFunctionParams) {
     }
     else {
       const response_json = await response.json();
-      throw new Error(JSON.stringify(response_json, null, '\t'));
+      return response_json as { error: Appdrop.APIRequestError };
     }
   }
   catch (error) {
     console.error('updateOrder error', error);
-    return null;
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] };
   }
 }
 
@@ -603,12 +603,12 @@ export async function confirmOrder(params: ConfirmOrderFunctionParams) {
     }
     else {
       const response_json = await response.json();
-      throw new Error(JSON.stringify(response_json, null, '\t'));
+      return response_json as { error: Appdrop.APIRequestError };
     }
   }
   catch (error) {
     console.error('confirmOrder error', error);
-    return null;
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] };
   }
 }
 
@@ -651,12 +651,12 @@ export async function cancelOrder(params: CancelOrderFunctionParams) {
     }
     else {
       const response_json = await response.json();
-      throw new Error(JSON.stringify(response_json, null, '\t'));
+      return response_json as { error: Appdrop.APIRequestError };
     }
   }
   catch (error) {
     console.error('cancelOrder error', error);
-    return null;
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] };
   }
 }
 
@@ -705,12 +705,12 @@ export async function syncPrintfulProducts(params: SyncPrintfulProductsFunctionP
     }
     else {
       const response_json = await response.json();
-      throw new Error(JSON.stringify(response_json, null, '\t'));
+      return response_json as { error: Appdrop.APIRequestError };
     }
   }
   catch (error) {
     console.error('syncPrintfulProducts error', error);
-    return null;
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] };
   }
 }
 
@@ -757,12 +757,12 @@ export async function createProjectTemplate(params: CreateProjectTemplateFunctio
     }
     else {
       const response_json = await response.json();
-      throw new Error(JSON.stringify(response_json, null, '\t'));
+      return response_json as { error: Appdrop.APIRequestError };
     }
   }
   catch (error) {
     console.error('createProjectTemplate error', error);
-    return null;
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] };
   }
 }
 
@@ -803,12 +803,12 @@ export async function updateProjectTemplate(params: UpdateProjectTemplateFunctio
     }
     else {
       const response_json = await response.json();
-      throw new Error(JSON.stringify(response_json, null, '\t'));
+      return response_json as { error: Appdrop.APIRequestError };
     }
   }
   catch (error) {
     console.error('updateProjectTemplate error', error);
-    return null;
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] };
   }
 }
 
@@ -851,12 +851,12 @@ export async function createProject<T>(params: CreateProjectFunctionParams) {
     }
     else {
       const response_json = await response.json();
-      throw new Error(JSON.stringify(response_json, null, '\t'));
+      return response_json as { error: Appdrop.APIRequestError };
     }
   }
   catch (error) {
     console.error('createProject error', error);
-    return null;
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] };
   }
 }
 
@@ -902,12 +902,12 @@ export async function updateProject<T>(params: UpdateProjectFunctionParams) {
     }
     else {
       const response_json = await response.json();
-      throw new Error(JSON.stringify(response_json, null, '\t'));
+      return response_json as { error: Appdrop.APIRequestError };
     }
   }
   catch (error) {
     console.error('updateProject error', error);
-    return null;
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] };
   }
 }
 
@@ -953,12 +953,12 @@ export async function createApp<T>(params: CreateAppFunctionParams) {
     }
     else {
       const response_json = await response.json();
-      throw new Error(JSON.stringify(response_json, null, '\t'));
+      return response_json as { error: Appdrop.APIRequestError };
     }
   }
   catch (error) {
     console.error('createApp error', error);
-    return null;
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] };
   }
 }
 
@@ -1006,12 +1006,12 @@ export async function updateApp<T>(params: UpdateAppFunctionParams) {
     }
     else {
       const response_json = await response.json();
-      throw new Error(JSON.stringify(response_json, null, '\t'));
+      return response_json as { error: Appdrop.APIRequestError };
     }
   }
   catch (error) {
     console.error('updateApp error', error);
-    return null;
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] };
   }
 }
 
@@ -1064,12 +1064,12 @@ export async function initAppState<T>(params: InitAppStateFunctionParams) {
     }
     else {
       const response_json = await response.json();
-      throw new Error(JSON.stringify(response_json, null, '\t'));
+      return response_json as { error: Appdrop.APIRequestError };
     }
   }
   catch (error) {
     console.error('initCloudAppState error', error);
-    return null;
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] };
   }
 }
 
@@ -1120,12 +1120,12 @@ export async function updateUser<T>(params: UpdateUserFunctionParams) {
     }
     else {
       const response_json = await response.json();
-      throw new Error(JSON.stringify(response_json, null, '\t'));
+      return response_json as { error: Appdrop.APIRequestError };
     }
   }
   catch (error) {
     console.error('updateUser error', error);
-    return null;
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] };
   }
 }
 
@@ -1171,12 +1171,12 @@ export async function createPost<T>(params: CreatePostFunctionParams) {
     }
     else {
       const response_json = await response.json();
-      throw new Error(JSON.stringify(response_json, null, '\t'));
+      return response_json as { error: Appdrop.APIRequestError };
     }
   }
   catch (error) {
     console.error('createPost error', error);
-    return null;
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] };
   }
 }
 
@@ -1219,12 +1219,12 @@ export async function updatePost<T>(params: UpdatePostFunctionParams) {
     }
     else {
       const response_json = await response.json();
-      throw new Error(JSON.stringify(response_json, null, '\t'));
+      return response_json as { error: Appdrop.APIRequestError };
     }
   }
   catch (error) {
     console.error('updatePost error', error);
-    return null;
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] };
   }
 }
 
@@ -1260,12 +1260,12 @@ export async function createPromo(params: CreatePromoFunctionParams) {
     }
     else {
       const response_json = await response.json();
-      throw new Error(JSON.stringify(response_json, null, '\t'));
+      return response_json as { error: Appdrop.APIRequestError };
     }
   }
   catch (error) {
     console.error('createPromo error', error);
-    return null;
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] };
   }
 }
 
@@ -1308,12 +1308,12 @@ export async function updatePromo(params: UpdatePromoFunctionParams) {
     }
     else {
       const response_json = await response.json();
-      throw new Error(JSON.stringify(response_json, null, '\t'));
+      return response_json as { error: Appdrop.APIRequestError };
     }
   }
   catch (error) {
     console.error('updatePromo error', error);
-    return null;
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] };
   }
 }
 
@@ -1352,12 +1352,12 @@ export async function createRemoteAsset(params: CreateRemoteAssetFunctionParams)
     }
     else {
       const response_json = await response.json();
-      throw new Error(JSON.stringify(response_json, null, '\t'));
+      return response_json as { error: Appdrop.APIRequestError };
     }
   }
   catch (error) {
     console.error('createRemoteAsset error', error);
-    return null;
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] };
   }
 }
 
@@ -1400,12 +1400,12 @@ export async function updateRemoteAsset(params: UpdateRemoteAssetFunctionParams)
     }
     else {
       const response_json = await response.json();
-      throw new Error(JSON.stringify(response_json, null, '\t'));
+      return response_json as { error: Appdrop.APIRequestError };
     }
   }
   catch (error) {
     console.error('updateRemoteAsset error', error);
-    return null;
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] };
   }
 }
 
@@ -1446,12 +1446,12 @@ export async function createThread<T>(params: CreateThreadFunctionParams) {
     }
     else {
       const response_json = await response.json();
-      throw new Error(JSON.stringify(response_json, null, '\t'));
+      return response_json as { error: Appdrop.APIRequestError };
     }
   }
   catch (error) {
     console.error('createThread error', error);
-    return null;
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] };
   }
 }
 
@@ -1494,12 +1494,12 @@ export async function updateThread<T>(params: UpdateThreadFunctionParams) {
     }
     else {
       const response_json = await response.json();
-      throw new Error(JSON.stringify(response_json, null, '\t'));
+      return response_json as { error: Appdrop.APIRequestError };
     }
   }
   catch (error) {
     console.error('updateThread error', error);
-    return null;
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] };
   }
 }
 
@@ -1605,7 +1605,7 @@ export async function latLongToAddress(params: LatLongToAddressParams) {
   }
   catch (error) {
     console.error('latLongToAddress error', error);
-    return null;
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] };
   }
 }
 
@@ -1713,7 +1713,7 @@ export async function addressToLatLong(params: AddressToLatLongParams) {
   }
   catch (error) {
     console.error('addressToLatLong error', error);
-    return null;
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] };
   }
 }
 
