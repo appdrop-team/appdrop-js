@@ -5,6 +5,12 @@ All notable changes to the `appdrop-js` package will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this package adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.116] - 2021-06-07
+
+### Changed
+
+- `appdrop-api` update
+
 ## [2.2.115] - 2021-06-07
 
 ### Changed
