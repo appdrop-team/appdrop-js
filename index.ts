@@ -1529,6 +1529,9 @@ interface LatLongToAddressResponse {
     types: ('postal_code')[];
   }[];
 }
+interface AddressJS extends Appdrop.Address {
+  object: 'address';
+}
 /**
  * Exchanges a latitude and longitude for an Address (excludes line1 and line2)
  */
@@ -1596,7 +1599,10 @@ export async function latLongToAddress(params: LatLongToAddressParams) {
         state_code,
         zip,
       };
-      return address;
+      return {
+        ...address,
+        object: 'address'
+      } as AddressJS;
     }
     else {
       const response_json = await response.json();
@@ -1703,7 +1709,13 @@ export async function addressToLatLong(params: AddressToLatLongParams) {
       return {
         address: formatted_address,
         lat,
-        long: lng
+        long: lng,
+        object: 'coord'
+      } as {
+        address: string;
+        lat: number;
+        long: number;
+        object: 'coord'
       };
     }
     else {
