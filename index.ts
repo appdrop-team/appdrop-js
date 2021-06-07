@@ -51,7 +51,7 @@ export async function authenticateUser<T>(params: AuthenticateUserFunctionParams
   }
   catch (error) {
     console.error('authenticateUser error', error);
-    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] } as { error: Appdrop.APIRequestError; object: 'error'; };
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'], object: 'error' } as { error: Appdrop.APIRequestError; object: 'error'; };
   }
 }
 
@@ -97,7 +97,7 @@ export async function sendPasswordResetEmail(params: SendPasswordResetEmailFunct
   }
   catch (error) {
     console.error('sendPasswordResetEmail error', error);
-    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] } as { error: Appdrop.APIRequestError; object: 'error'; };
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'], object: 'error' } as { error: Appdrop.APIRequestError; object: 'error'; };
   }
 }
 
@@ -143,7 +143,7 @@ export async function sendPasswordResetVerificationCode<T>(params: SendPasswordR
   }
   catch (error) {
     console.error('sendPasswordResetVerificationCode error', error);
-    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] } as { error: Appdrop.APIRequestError; object: 'error'; };
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'], object: 'error' } as { error: Appdrop.APIRequestError; object: 'error'; };
   }
 }
 
@@ -200,7 +200,7 @@ export async function attachCardToCustomer<T>(params: AttachCardToCustomerFuncti
   }
   catch (error) {
     console.error('attachCardToCustomer error', error);
-    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] } as { error: Appdrop.APIRequestError; object: 'error'; };
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'], object: 'error' } as { error: Appdrop.APIRequestError; object: 'error'; };
   }
 }
 
@@ -249,7 +249,7 @@ export async function createCustomerSubscription<T>(params: CreateCustomerSubscr
   }
   catch (error) {
     console.error('createCustomerSubscription error', error);
-    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] } as { error: Appdrop.APIRequestError; object: 'error'; };
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'], object: 'error' } as { error: Appdrop.APIRequestError; object: 'error'; };
   }
 }
 
@@ -300,7 +300,7 @@ export async function updateCustomerSubscription<T>(params: UpdateCustomerSubscr
   }
   catch (error) {
     console.error('updateCustomerSubscription error', error);
-    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] } as { error: Appdrop.APIRequestError; object: 'error'; };
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'], object: 'error' } as { error: Appdrop.APIRequestError; object: 'error'; };
   }
 }
 
@@ -350,7 +350,7 @@ export async function createCustomerCharge(params: CreateCustomerChargeFunctionP
   }
   catch (error) {
     console.error('createCustomerCharge error', error);
-    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] } as { error: Appdrop.APIRequestError; object: 'error'; };
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'], object: 'error' } as { error: Appdrop.APIRequestError; object: 'error'; };
   }
 }
 
@@ -401,7 +401,7 @@ export async function createCustomerChargeRefund(params: CreateCustomerChargeRef
   }
   catch (error) {
     console.error('createCustomerChargeRefund error', error);
-    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] } as { error: Appdrop.APIRequestError; object: 'error'; };
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'], object: 'error' } as { error: Appdrop.APIRequestError; object: 'error'; };
   }
 }
 
@@ -455,7 +455,7 @@ export async function updateEntity<T>(params: UpdateEntityFunctionParams) {
   }
   catch (error) {
     console.error('updateEntity error', error);
-    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] } as { error: Appdrop.APIRequestError; object: 'error'; };
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'], object: 'error' } as { error: Appdrop.APIRequestError; object: 'error'; };
   }
 }
 
@@ -509,7 +509,7 @@ export async function createOrder(params: CreateOrderFunctionParams) {
   }
   catch (error) {
     console.error('createOrder error', error);
-    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] } as { error: Appdrop.APIRequestError; object: 'error'; };
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'], object: 'error' } as { error: Appdrop.APIRequestError; object: 'error'; };
   }
 }
 
@@ -560,7 +560,7 @@ export async function updateOrder(params: UpdateOrderFunctionParams) {
   }
   catch (error) {
     console.error('updateOrder error', error);
-    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] } as { error: Appdrop.APIRequestError; object: 'error'; };
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'], object: 'error' } as { error: Appdrop.APIRequestError; object: 'error'; };
   }
 }
 
@@ -608,7 +608,7 @@ export async function confirmOrder(params: ConfirmOrderFunctionParams) {
   }
   catch (error) {
     console.error('confirmOrder error', error);
-    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] } as { error: Appdrop.APIRequestError; object: 'error'; };
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'], object: 'error' } as { error: Appdrop.APIRequestError; object: 'error'; };
   }
 }
 
@@ -656,7 +656,7 @@ export async function cancelOrder(params: CancelOrderFunctionParams) {
   }
   catch (error) {
     console.error('cancelOrder error', error);
-    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] } as { error: Appdrop.APIRequestError; object: 'error'; };
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'], object: 'error' } as { error: Appdrop.APIRequestError; object: 'error'; };
   }
 }
 
@@ -710,7 +710,7 @@ export async function syncPrintfulProducts(params: SyncPrintfulProductsFunctionP
   }
   catch (error) {
     console.error('syncPrintfulProducts error', error);
-    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] } as { error: Appdrop.APIRequestError; object: 'error'; };
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'], object: 'error' } as { error: Appdrop.APIRequestError; object: 'error'; };
   }
 }
 
@@ -762,7 +762,7 @@ export async function createProjectTemplate(params: CreateProjectTemplateFunctio
   }
   catch (error) {
     console.error('createProjectTemplate error', error);
-    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] } as { error: Appdrop.APIRequestError; object: 'error'; };
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'], object: 'error' } as { error: Appdrop.APIRequestError; object: 'error'; };
   }
 }
 
@@ -808,7 +808,7 @@ export async function updateProjectTemplate(params: UpdateProjectTemplateFunctio
   }
   catch (error) {
     console.error('updateProjectTemplate error', error);
-    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] } as { error: Appdrop.APIRequestError; object: 'error'; };
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'], object: 'error' } as { error: Appdrop.APIRequestError; object: 'error'; };
   }
 }
 
@@ -856,7 +856,7 @@ export async function createProject<T>(params: CreateProjectFunctionParams) {
   }
   catch (error) {
     console.error('createProject error', error);
-    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] } as { error: Appdrop.APIRequestError; object: 'error'; };
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'], object: 'error' } as { error: Appdrop.APIRequestError; object: 'error'; };
   }
 }
 
@@ -907,7 +907,7 @@ export async function updateProject<T>(params: UpdateProjectFunctionParams) {
   }
   catch (error) {
     console.error('updateProject error', error);
-    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] } as { error: Appdrop.APIRequestError; object: 'error'; };
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'], object: 'error' } as { error: Appdrop.APIRequestError; object: 'error'; };
   }
 }
 
@@ -958,7 +958,7 @@ export async function createApp<T>(params: CreateAppFunctionParams) {
   }
   catch (error) {
     console.error('createApp error', error);
-    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] } as { error: Appdrop.APIRequestError; object: 'error'; };
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'], object: 'error' } as { error: Appdrop.APIRequestError; object: 'error'; };
   }
 }
 
@@ -1011,7 +1011,7 @@ export async function updateApp<T>(params: UpdateAppFunctionParams) {
   }
   catch (error) {
     console.error('updateApp error', error);
-    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] } as { error: Appdrop.APIRequestError; object: 'error'; };
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'], object: 'error' } as { error: Appdrop.APIRequestError; object: 'error'; };
   }
 }
 
@@ -1069,7 +1069,7 @@ export async function initAppState<T>(params: InitAppStateFunctionParams) {
   }
   catch (error) {
     console.error('initCloudAppState error', error);
-    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] } as { error: Appdrop.APIRequestError; object: 'error'; };
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'], object: 'error' } as { error: Appdrop.APIRequestError; object: 'error'; };
   }
 }
 
@@ -1125,7 +1125,7 @@ export async function updateUser<T>(params: UpdateUserFunctionParams) {
   }
   catch (error) {
     console.error('updateUser error', error);
-    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] } as { error: Appdrop.APIRequestError; object: 'error'; };
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'], object: 'error' } as { error: Appdrop.APIRequestError; object: 'error'; };
   }
 }
 
@@ -1176,7 +1176,7 @@ export async function createPost<T>(params: CreatePostFunctionParams) {
   }
   catch (error) {
     console.error('createPost error', error);
-    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] } as { error: Appdrop.APIRequestError; object: 'error'; };
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'], object: 'error' } as { error: Appdrop.APIRequestError; object: 'error'; };
   }
 }
 
@@ -1224,7 +1224,7 @@ export async function updatePost<T>(params: UpdatePostFunctionParams) {
   }
   catch (error) {
     console.error('updatePost error', error);
-    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] } as { error: Appdrop.APIRequestError; object: 'error'; };
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'], object: 'error' } as { error: Appdrop.APIRequestError; object: 'error'; };
   }
 }
 
@@ -1265,7 +1265,7 @@ export async function createPromo(params: CreatePromoFunctionParams) {
   }
   catch (error) {
     console.error('createPromo error', error);
-    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] } as { error: Appdrop.APIRequestError; object: 'error'; };
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'], object: 'error' } as { error: Appdrop.APIRequestError; object: 'error'; };
   }
 }
 
@@ -1313,7 +1313,7 @@ export async function updatePromo(params: UpdatePromoFunctionParams) {
   }
   catch (error) {
     console.error('updatePromo error', error);
-    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] } as { error: Appdrop.APIRequestError; object: 'error'; };
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'], object: 'error' } as { error: Appdrop.APIRequestError; object: 'error'; };
   }
 }
 
@@ -1357,7 +1357,7 @@ export async function createRemoteAsset(params: CreateRemoteAssetFunctionParams)
   }
   catch (error) {
     console.error('createRemoteAsset error', error);
-    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] } as { error: Appdrop.APIRequestError; object: 'error'; };
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'], object: 'error' } as { error: Appdrop.APIRequestError; object: 'error'; };
   }
 }
 
@@ -1405,7 +1405,7 @@ export async function updateRemoteAsset(params: UpdateRemoteAssetFunctionParams)
   }
   catch (error) {
     console.error('updateRemoteAsset error', error);
-    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] } as { error: Appdrop.APIRequestError; object: 'error'; };
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'], object: 'error' } as { error: Appdrop.APIRequestError; object: 'error'; };
   }
 }
 
@@ -1451,7 +1451,7 @@ export async function createThread<T>(params: CreateThreadFunctionParams) {
   }
   catch (error) {
     console.error('createThread error', error);
-    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] } as { error: Appdrop.APIRequestError; object: 'error'; };
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'], object: 'error' } as { error: Appdrop.APIRequestError; object: 'error'; };
   }
 }
 
@@ -1499,7 +1499,7 @@ export async function updateThread<T>(params: UpdateThreadFunctionParams) {
   }
   catch (error) {
     console.error('updateThread error', error);
-    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] } as { error: Appdrop.APIRequestError; object: 'error'; };
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'], object: 'error' } as { error: Appdrop.APIRequestError; object: 'error'; };
   }
 }
 
@@ -1605,7 +1605,7 @@ export async function latLongToAddress(params: LatLongToAddressParams) {
   }
   catch (error) {
     console.error('latLongToAddress error', error);
-    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] } as { error: Appdrop.APIRequestError; object: 'error'; };
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'], object: 'error' } as { error: Appdrop.APIRequestError; object: 'error'; };
   }
 }
 
@@ -1713,7 +1713,7 @@ export async function addressToLatLong(params: AddressToLatLongParams) {
   }
   catch (error) {
     console.error('addressToLatLong error', error);
-    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'] } as { error: Appdrop.APIRequestError; object: 'error'; };
+    return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'], object: 'error' } as { error: Appdrop.APIRequestError; object: 'error'; };
   }
 }
 
