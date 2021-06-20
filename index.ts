@@ -408,35 +408,35 @@ export async function createCustomerChargeRefund(params: CreateCustomerChargeRef
 /**
 * 
 * **************
-* Entities
+* Accounts
 * **************
 * 
 */
 
-export interface UpdateEntityFunctionParams extends Appdrop.APIRequestBody {
-  data: Appdrop.UpdateEnterpriseParams | Appdrop.UpdateOrganizationParams;
-  entity_id: string;
+export interface UpdateAccountFunctionParams extends Appdrop.APIRequestBody {
+  data: Appdrop.UpdateAccountParams;
+  account_id: string;
 }
 
 /**
  * Updates an Enterprise or Organization
  */
-export async function updateEntity<T>(params: UpdateEntityFunctionParams) {
+export async function updateAccount<T>(params: UpdateAccountFunctionParams) {
   try {
     const {
       app_config,
       data,
-      entity_id,
+      account_id,
       livemode
     } = params;
-    const _: Appdrop.APIRequestEndpoint = 'v2/entities/:entityId';
+    const _: Appdrop.APIRequestEndpoint = 'v2/accounts/:accountId';
     const method: Appdrop.APIRequestMethod = 'PATCH';
     const request_body: Appdrop.APIRequestBody = {
       app_config: app_config,
       livemode: livemode,
       data: data
     };
-    const response = await fetch(`${Appdrop.getAPIRequestBase(app_config.data_center)}/v2/entities/${entity_id}`, {
+    const response = await fetch(`${Appdrop.getAPIRequestBase(app_config.data_center)}/v2/accounts/${account_id}`, {
       headers: {
         "Authorization": `Basic ${btoa(app_config.api_key)}`,
         "Content-Type": 'text/plain'
@@ -454,7 +454,7 @@ export async function updateEntity<T>(params: UpdateEntityFunctionParams) {
     }
   }
   catch (error) {
-    console.error('updateEntity error', error);
+    console.error('updateAccount error', error);
     return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'], object: 'error' } as { error: Appdrop.APIRequestError; object: 'error'; };
   }
 }
