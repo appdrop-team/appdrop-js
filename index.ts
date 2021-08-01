@@ -1503,32 +1503,30 @@ export async function updateThread<T>(params: UpdateThreadFunctionParams) {
   }
 }
 
-export interface CreateThreadPostFunctionParams extends Appdrop.APIRequestBody {
-  data: Appdrop.CreateThreadParams;
-  thread_id: string;
+export interface CreateStatusPostFunctionParams extends Appdrop.APIRequestBody {
+  data: Appdrop.CreatePostParams;
 }
 
 /**
- * Creates a thread_post.
+ * Creates a status_post.
  * 
  * @Important T must inherit from Appdrop.Post
  */
- export async function createThreadPost<T>(params: CreateThreadPostFunctionParams) {
+ export async function createStatusPost<T>(params: CreateStatusPostFunctionParams) {
   try {
     const {
       app_config,
       data,
       livemode,
-      thread_id,
     } = params;
-    const _: Appdrop.APIRequestEndpoint = 'v2/projects/:projectId/threads/:threadId/thread_posts';
+    const _: Appdrop.APIRequestEndpoint = 'v2/projects/:projectId/status_posts';
     const method: Appdrop.APIRequestMethod = 'PUT';
     const request_body: Appdrop.APIRequestBody = {
       app_config: app_config,
       livemode: livemode,
       data: data
     };
-    const response = await fetch(`${Appdrop.getAPIRequestBase(app_config.data_center)}/v2/projects/${app_config.project_id}/threads/${thread_id}/thread_posts`, {
+    const response = await fetch(`${Appdrop.getAPIRequestBase(app_config.data_center)}/v2/projects/${app_config.project_id}/status_posts`, {
       headers: {
         "Authorization": `Basic ${btoa(app_config.api_key)}`,
         "Content-Type": 'text/plain'
@@ -1546,39 +1544,37 @@ export interface CreateThreadPostFunctionParams extends Appdrop.APIRequestBody {
     }
   }
   catch (error) {
-    console.error('createThreadPost error', error);
+    console.error('createStatusPost error', error);
     return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'], object: 'error' } as { error: Appdrop.APIRequestError; object: 'error'; };
   }
 }
 
-export interface UpdateThreadPostFunctionParams extends Appdrop.APIRequestBody {
+export interface UpdateStatusPostFunctionParams extends Appdrop.APIRequestBody {
   data: Appdrop.UpdatePostParams;
-  thread_id: string;
-  thread_post_id: string;
+  status_post_id: string;
 }
 
 /**
- * Updates a thread_post.
+ * Updates a status_post.
  * 
  * @Important T must inherit from Appdrop.Post
  */
-export async function updateThreadPost<T>(params: UpdateThreadPostFunctionParams) {
+export async function updateStatusPost<T>(params: UpdateStatusPostFunctionParams) {
   try {
     const {
       app_config,
       data,
       livemode,
-      thread_id,
-      thread_post_id,
+      status_post_id,
     } = params;
-    const _: Appdrop.APIRequestEndpoint = 'v2/projects/:projectId/threads/:threadId/thread_posts/:threadPostId';
+    const _: Appdrop.APIRequestEndpoint = 'v2/projects/:projectId/status_posts/:statusPostId';
     const method: Appdrop.APIRequestMethod = 'PATCH';
     const request_body: Appdrop.APIRequestBody = {
       app_config: app_config,
       livemode: livemode,
       data: data
     };
-    const response = await fetch(`${Appdrop.getAPIRequestBase(app_config.data_center)}/v2/projects/${app_config.project_id}/threads/${thread_id}/thread_posts/${thread_post_id}`, {
+    const response = await fetch(`${Appdrop.getAPIRequestBase(app_config.data_center)}/v2/projects/${app_config.project_id}/status_posts/${status_post_id}`, {
       headers: {
         "Authorization": `Basic ${btoa(app_config.api_key)}`,
         "Content-Type": 'text/plain'
@@ -1596,7 +1592,7 @@ export async function updateThreadPost<T>(params: UpdateThreadPostFunctionParams
     }
   }
   catch (error) {
-    console.error('updateThreadPost error', error);
+    console.error('updateStatusPost error', error);
     return { error: Appdrop.ERROR_RESPONSES['base/unknown-error'], object: 'error' } as { error: Appdrop.APIRequestError; object: 'error'; };
   }
 }
